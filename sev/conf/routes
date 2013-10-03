@@ -1,0 +1,44 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+# Ventilateurs
+GET     /ventilateurs				controllers.Application.listerVentilateurs()
+POST    /ventilateurs				controllers.Application.ajouterVentilateur()
+POST    /ventilateurs/:id/supprimer	controllers.Application.supprimerVentilateur(id: Integer)
+
+# Stations
+#GET     /stations					controllers.Application.listerStations()
+#POST    /stations					controllers.Application.ajouterStation()
+#POST    /stations/:id/supprimer 	controllers.Application.supprimerStation(id: Integer)
+
+# Lignes
+#GET     /lignes						controllers.Application.listerLignes()
+#POST    /lignes						controllers.Application.ajouterLigne()
+#POST    /lignes/:id/supprimer		controllers.Application.supprimerLigne(id: Integer)
+
+# Zones
+#GET     /zones						controllers.Application.listerZones()
+#POST    /zones						controllers.Application.ajouterZone()
+#POST    /zones/:id/supprimer		controllers.Application.supprimerZone(id: Integer)
+
+# Utilisateurs
+#GET     /utilisateurs				controllers.Application.listerUtilisateurs()
+#POST    /utilisateurs				controllers.Application.ajouterUtilisateur()
+#POST    /utilisateurs/:id/supprimer	controllers.Application.supprimerUtilisateur(id: Integer)
+
+# Etats
+#GET     /etats						controllers.Application.listerEtats()
+#POST    /etats						controllers.Application.ajouterEtat()
+#POST    /etats/:id/supprimer		controllers.Application.supprimerEtat(id: Integer)
+
+# EtatsCCVM
+#GET     /etatsCCVM					controllers.Application.listerEtatsCCVM()
+#POST    /etatsCCVM					controllers.Application.ajouterEtatCCVM()
+#POST    /etatsCCVM/:id/supprimer	controllers.Application.supprimerEtatCCVM(id: Integer)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
