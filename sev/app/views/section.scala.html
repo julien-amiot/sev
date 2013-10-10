@@ -1,0 +1,47 @@
+@(sections: List[Section], sectionForm: Form[Section])
+@import helper._
+@import play.i18n._
+@main(Messages.get("views.section.titre")) {
+    <h1>@sections.size() @Messages.get("views.section.h.sections")</h1>
+    <table id="tableSections" @*class="table table-striped table-bordered"*@>
+	    <thead>
+	        <tr>
+	            <th>Section</th>
+	            <th>Indisponibilit&eacute;s</th>
+	            <th>Actions</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        @for(section <- sections) {
+	            <tr>
+	            	<td>
+	            		@section.libelle
+	            	</td>
+	            	<td></td>
+	                <td style="white-space: nowrap">
+		                @form(routes.SectionControleur.supprimerSection(section.id)) {
+		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' @*class="btn"*@>
+		                }
+		                <input type="submit" value='@Messages.get("views.bouton.detail")' @*class="btn"*@>
+		                <input type="submit" value='@Messages.get("views.bouton.modifier")' @*class="btn"*@>
+		            </td>	            	
+	            </tr>
+	        }
+	    </tbody>
+	</table>
+    
+    <h2>@Messages.get("views.section.h.ajouter")</h2>
+    @form(routes.SectionControleur.ajouterSection()) {
+        @inputText(
+        	sectionForm("libelle"),
+        	'_label -> Messages.get("views.section.form.label.libelle")
+        ) 
+        @select(
+        	sectionForm("ligne.id"),
+        	options(Ligne.selectOptions),
+        	'_default -> Messages.get("views.section.form.select.ligne.defaut"),
+        	'_label -> Messages.get("views.section.form.label.ligne")
+       	)
+        <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
+    }
+}

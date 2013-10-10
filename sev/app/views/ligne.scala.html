@@ -1,0 +1,40 @@
+@(lignes: List[Ligne], ligneForm: Form[Ligne])
+@import helper._
+@import play.i18n._
+@main(Messages.get("views.ligne.titre")) {
+    <h1>@lignes.size() @Messages.get("views.ligne.h.lignes")</h1>
+    <table id="tableLignes" @*class="table table-striped table-bordered"*@>
+	    <thead>
+	        <tr>
+	            <th>Ligne</th>
+	            <th>Indisponibilit&eacute;s</th>
+	            <th>Actions</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        @for(ligne <- lignes) {
+	            <tr>
+	            	<td>
+	            		@ligne.libelle
+	            	</td>
+	            	<td></td>
+	                <td style="white-space: nowrap">
+		                @form(routes.LigneControleur.supprimerLigne(ligne.id)) {
+		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' @*class="btn"*@>
+		                }
+		                <input type="submit" value='@Messages.get("views.bouton.detail")' @*class="btn"*@>
+		                <input type="submit" value='@Messages.get("views.bouton.modifier")' @*class="btn"*@>
+		            </td>	            	
+	            </tr>
+	        }
+	    </tbody>
+	</table>
+    
+    <h2>@Messages.get("views.ligne.h.ajouter")</h2>
+    @form(routes.LigneControleur.ajouterLigne()) {
+        @inputText(ligneForm("libelle"), '_label -> Messages.get("views.ligne.form.label.libelle"), '_showConstraints -> false) 
+        @inputText(ligneForm("guideOperateurLigneURI"), '_label -> Messages.get("views.ligne.form.label.guideOperateurLigneURI"), '_showConstraints -> false) 
+		@inputText(ligneForm("guideOperateurLigneDegradeURI"), '_label -> Messages.get("views.ligne.form.label.guideOperateurLigneDegradeURI"), '_showConstraints -> false) 
+        <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
+    }
+}
