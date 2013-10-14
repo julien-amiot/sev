@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import play.data.validation.Constraints.Required;
@@ -18,8 +19,6 @@ extends Model
 {
 	private static final long serialVersionUID = 1L;
 	@Id
-	public Integer id;
-	@Required
 	public String libelle;
 	@Required
 	public String guideOperateurLigneURI;
@@ -27,7 +26,9 @@ extends Model
 	public String guideOperateurLigneDegradeURI;
 	@OneToMany(cascade = CascadeType.ALL)
 	public List<Section> sections;
-	public static Finder<Integer, Ligne> find = new Finder<Integer, Ligne>(Integer.class, Ligne.class);
+	@ManyToOne
+	public Reseau reseau;
+	public static Finder<String, Ligne> find = new Finder<String, Ligne>(String.class, Ligne.class);
 	
 	public static List<Ligne> lister()
 	{
@@ -39,9 +40,14 @@ extends Model
 		ligne.save();
 	}
 	
-	public static void supprimer(Integer id)
+	public static void supprimer(String libelle)
 	{
-		find.ref(id).delete();
+		find.ref(libelle).delete();
+	}
+	
+	public static Ligne detail(String libelle)
+	{
+		return find.ref(libelle);
 	}
 	
 	public static Map<String, String> selectOptions()
@@ -50,9 +56,19 @@ extends Model
 		
 		for (Ligne ligne : lister())
 		{
-			mapOptions.put("" + ligne.id, ligne.libelle);
+			mapOptions.put("" + ligne.libelle, ligne.libelle);
 		}
 		
 		return mapOptions;
+	}
+	
+	public Reseau getReseau()
+	{
+		return reseau;
+	}
+	
+	public String toString()
+	{
+		return libelle;
 	}
 }

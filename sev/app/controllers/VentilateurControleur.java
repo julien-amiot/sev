@@ -30,9 +30,15 @@ extends Controller
 		}
 	}
 	
-	public static Result supprimerVentilateur(Integer id)
+	public static Result supprimerVentilateur(String libelle)
 	{
-		Ventilateur.supprimer(id);
+		Ventilateur.supprimer(libelle);
+		return redirect(routes.VentilateurControleur.listerVentilateurs());
+	}
+	
+	public static Result detailVentilateur(String libelle)
+	{
+		Ventilateur.detail(libelle);
 		return redirect(routes.VentilateurControleur.listerVentilateurs());
 	}
 }

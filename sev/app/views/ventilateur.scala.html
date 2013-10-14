@@ -1,13 +1,13 @@
 @(ventilateurs: List[Ventilateur], ventilateurForm: Form[Ventilateur])
 @import helper._
 @import play.i18n._
-@main(Messages.get("views.ventilateur.titre.page.ventilateurs")) {
-    <h1>@ventilateurs.size() @Messages.get("views.ventilateur.titre.ventilateurs")</h1>
+@main(Messages.get("views.ventilateur.titre")) {
+    <h1>@ventilateurs.size() @Messages.get("views.ventilateur.h.ventilateurs")</h1>
     <table id="tableVentilateurs" @*class="table table-striped table-bordered"*@>
 	    <thead>
 	        <tr>
-	            <th>Ligne d'implantation ou ventil&eacute;e</th>
 	            <th>Ventilateur</th>
+				<th>Ligne</th>	            
 	            <th>Station</th>
 	            <th>Etat de fonctionnement</th>
 	            <th>D&eacute;but</th>
@@ -21,10 +21,10 @@
 	    <tbody>
 	        @for(ventilateur <- ventilateurs) {
 	            <tr>
-	            	<td></td>
 	            	<td>
 	            		@ventilateur.libelle
 	            	</td>
+	            	<td></td>	            	
 	            	<td></td>
 	            	<td></td>
 	            	<td></td>
@@ -33,7 +33,7 @@
 	            	<td></td>
 	            	<td></td>
 	                <td style="white-space: nowrap">
-		                @form(routes.VentilateurControleur.supprimerVentilateur(ventilateur.id)) {
+		                @form(routes.VentilateurControleur.supprimerVentilateur(ventilateur.libelle)) {
 		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' @*class="btn"*@>
 		                }
 		                <input type="submit" value='@Messages.get("views.bouton.detail")' @*class="btn"*@>
@@ -44,9 +44,12 @@
 	    </tbody>
 	</table>
     
-    <h2>@Messages.get("views.ventilateur.titre.ajouter")</h2>
+    <h2>@Messages.get("views.ventilateur.h.ajouter")</h2>
     @form(routes.VentilateurControleur.ajouterVentilateur()) {
-        @inputText(ventilateurForm("libelle"), 'label -> Messages.get("views.ventilateur.libelle")) 
+        @inputText(
+        	ventilateurForm("libelle"),
+        	'label -> Messages.get("views.ventilateur.form.label.libelle")
+       	) 
         <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
     }
 }

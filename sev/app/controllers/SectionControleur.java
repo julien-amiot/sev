@@ -31,9 +31,16 @@ extends Controller
 		}
 	}
 	
-	public static Result supprimerSection(Integer id)
+	public static Result supprimerSection(String libelle)
 	{
-		Section.supprimer(id);
+		Section.supprimer(libelle);
 		return redirect(routes.SectionControleur.listerSections());
+	}
+	
+	public static Result detailSection(String libelle)
+	{
+		Section.detail(libelle);
+		return redirect(routes.SectionControleur.listerSections());
+		//TODO
 	}
 }

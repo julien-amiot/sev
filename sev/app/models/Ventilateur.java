@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
 @Entity
@@ -15,10 +14,8 @@ extends
 {
 	private static final long serialVersionUID = 1L;
 	@Id
-	public Integer id;
-	@Required
 	public String libelle;
-	public static Finder<Integer, Ventilateur> find = new Finder<Integer, Ventilateur>(Integer.class, Ventilateur.class);
+	public static Finder<String, Ventilateur> find = new Finder<String, Ventilateur>(String.class, Ventilateur.class);
 	
 	public static List<Ventilateur> lister()
 	{
@@ -30,8 +27,13 @@ extends
 		ventilateur.save();
 	}
 	
-	public static void supprimer(Integer id)
+	public static Ventilateur detail(String libelle)
 	{
-		find.ref(id).delete();
+		return find.ref(libelle);
+	}
+	
+	public static void supprimer(String libelle)
+	{
+		find.ref(libelle).delete();
 	}
 }

@@ -3,6 +3,20 @@ views.bouton.ajouter=Ajouter
 views.bouton.detail=Détail
 views.bouton.supprimer=Supprimer
 views.bouton.modifier=Modifier
+views.table.th.reseau=Réseau
+views.table.th.actions=Actions
+views.table.th.section=Section
+views.table.th.reseau=Réseau
+views.table.th.ligne=Ligne
+views.table.th.indisponibilites=Indisponibilités
+views.menu.item.ventilateurs=Ventilateurs
+views.menu.item.stations=Stations
+views.menu.item.sections=Sections
+views.menu.item.zones=Zones
+views.menu.item.lignes=Lignes
+views.menu.item.reseaux=Réseaux
+views.menu.item.etatsVentilateur=Etats ventilateurs
+views.menu.item.etatsCCVM=Etats CCVM
 
 # VENTILATEURS
 views.ventilateur.titre=Liste des ventilateurs
@@ -10,14 +24,21 @@ views.ventilateur.h.ventilateurs=ventilateur(s)
 views.ventilateur.h.ajouter=Ajouter un ventilateur
 views.ventilateur.form.label.libelle=Libellé
 
+# RESEAUX
+views.reseau.titre=Liste des réseaux
+views.reseau.h.reseaux=réseau(x)
+views.reseau.h.ajouter=Ajouter un réseau
+views.reseau.form.label.libelle=Libellé
+
 # LIGNES
 views.ligne.titre=Liste des lignes
 views.ligne.h.lignes=ligne(s)
 views.ligne.h.ajouter=Ajouter une ligne
+views.ligne.form.label.reseau=Réseau
 views.ligne.form.label.libelle=Libellé
 views.ligne.form.label.guideOperateurLigneURI=URL GOL
 views.ligne.form.label.guideOperateurLigneDegradeURI=URL GOL dégradé
-views.section.form.select.ligne.defaut=Sélectionnez une ligne
+views.ligne.form.select.reseau.defaut=Sélectionnez un réseau
 
 # SECTIONS
 views.section.titre=Liste des sections
@@ -25,5 +46,6 @@ views.section.h.sections=section(s)
 views.section.h.ajouter=Ajouter une section
 views.section.form.label.libelle=Libellé
 views.section.form.label.ligne=Ligne
+views.section.form.select.ligne.defaut=Sélectionnez une ligne
 
 # STATIONS

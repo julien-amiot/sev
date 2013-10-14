@@ -6,9 +6,11 @@
     <table id="tableSections" @*class="table table-striped table-bordered"*@>
 	    <thead>
 	        <tr>
-	            <th>Section</th>
-	            <th>Indisponibilit&eacute;s</th>
-	            <th>Actions</th>
+	            <th>@Messages.get("views.table.th.section")</th>
+	        	<th>@Messages.get("views.table.th.reseau")</th>
+	        	<th>@Messages.get("views.table.th.ligne")</th>
+	            <th>@Messages.get("views.table.th.indisponibilites")</th>
+	            <th>@Messages.get("views.table.th.actions")</th>
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -17,9 +19,15 @@
 	            	<td>
 	            		@section.libelle
 	            	</td>
+	            	<td>
+	            		@section.getLigne.getReseau
+	            	</td>
+	            	<td>
+	            		@section.getLigne
+	            	</td>
 	            	<td></td>
 	                <td style="white-space: nowrap">
-		                @form(routes.SectionControleur.supprimerSection(section.id)) {
+		                @form(routes.SectionControleur.supprimerSection(section.libelle)) {
 		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' @*class="btn"*@>
 		                }
 		                <input type="submit" value='@Messages.get("views.bouton.detail")' @*class="btn"*@>
@@ -37,7 +45,7 @@
         	'_label -> Messages.get("views.section.form.label.libelle")
         ) 
         @select(
-        	sectionForm("ligne.id"),
+        	sectionForm("ligne.libelle"),
         	options(Ligne.selectOptions),
         	'_default -> Messages.get("views.section.form.select.ligne.defaut"),
         	'_label -> Messages.get("views.section.form.label.ligne")

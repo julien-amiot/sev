@@ -30,9 +30,16 @@ extends Controller
 		}
 	}
 	
-	public static Result supprimerLigne(Integer id)
+	public static Result supprimerLigne(String libelle)
 	{
-		Ligne.supprimer(id);
+		Ligne.supprimer(libelle);
 		return redirect(routes.LigneControleur.listerLignes());
+	}
+	
+	public static Result detailLigne(String libelle)
+	{
+		Ligne.detail(libelle);
+		return redirect(routes.LigneControleur.listerLignes());
+		//TODO
 	}
 }

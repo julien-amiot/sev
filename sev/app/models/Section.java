@@ -15,26 +15,34 @@ extends Model
 {
 	private static final long serialVersionUID = 1L;
 	@Id
-	public Integer id;
-	@Required
 	public String libelle;
 	@Required
 	@ManyToOne
 	public Ligne ligne;
-	public static Finder<Integer, Section> find = new Finder<Integer, Section>(Integer.class, Section.class);
+	public static Finder<String, Section> find = new Finder<String, Section>(String.class, Section.class);
 	
 	public static List<Section> lister()
 	{
 		return find.all();
 	}
 	
-	public static void creer(Section ligne)
+	public static void creer(Section section)
 	{
-		ligne.save();
+		section.save();
+	}
+
+	public static Section detail(String libelle)
+	{
+		return find.ref(libelle);
 	}
 	
-	public static void supprimer(Integer id)
+	public static void supprimer(String libelle)
 	{
-		find.ref(id).delete();
+		find.ref(libelle).delete();
+	}
+	
+	public Ligne getLigne()
+	{
+		return ligne;
 	}
 }

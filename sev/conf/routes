@@ -3,12 +3,13 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET     /                           	controllers.Application.index()
 
 # Ventilateurs
-GET     /ventilateurs				controllers.Application.listerVentilateurs()
-POST    /ventilateurs				controllers.Application.ajouterVentilateur()
-POST    /ventilateurs/:id/supprimer	controllers.Application.supprimerVentilateur(id: Integer)
+GET     /ventilateurs					controllers.VentilateurControleur.listerVentilateurs()
+POST    /ventilateurs					controllers.VentilateurControleur.ajouterVentilateur()
+GET		/ventilateurs/:id				controllers.VentilateurControleur.detailVentilateur(id: String)
+POST    /ventilateurs/:id/supprimer		controllers.VentilateurControleur.supprimerVentilateur(id: String)
 
 # Stations
 #GET     /stations					controllers.Application.listerStations()
@@ -16,29 +17,45 @@ POST    /ventilateurs/:id/supprimer	controllers.Application.supprimerVentilateur
 #POST    /stations/:id/supprimer 	controllers.Application.supprimerStation(id: Integer)
 
 # Lignes
-#GET     /lignes						controllers.Application.listerLignes()
-#POST    /lignes						controllers.Application.ajouterLigne()
-#POST    /lignes/:id/supprimer		controllers.Application.supprimerLigne(id: Integer)
+GET     /lignes							controllers.LigneControleur.listerLignes()
+POST    /lignes							controllers.LigneControleur.ajouterLigne()
+GET		/lignes/:libelle				controllers.LigneControleur.detailLigne(libelle: String)
+POST    /lignes/:libelle/supprimer		controllers.LigneControleur.supprimerLigne(libelle: String)
+
+# Sections
+GET     /sections						controllers.SectionControleur.listerSections()
+POST    /sections						controllers.SectionControleur.ajouterSection()
+GET	    /sections/:libelle				controllers.SectionControleur.detailSection(libelle: String)
+POST    /sections/:libelle/supprimer	controllers.SectionControleur.supprimerSection(libelle: String)
+
+# Reseaux
+GET     /reseaux						controllers.ReseauControleur.listerReseaux()
+POST    /reseaux						controllers.ReseauControleur.ajouterReseau()
+GET	    /reseaux/:libelle				controllers.ReseauControleur.detailReseau(libelle: String)
+POST    /reseaux/:libelle/supprimer		controllers.ReseauControleur.supprimerReseau(libelle: String)
 
 # Zones
-#GET     /zones						controllers.Application.listerZones()
-#POST    /zones						controllers.Application.ajouterZone()
-#POST    /zones/:id/supprimer		controllers.Application.supprimerZone(id: Integer)
+GET     /zones						controllers.ZoneControleur.listerZones()
+POST    /zones						controllers.ZoneControleur.ajouterZone()
+GET	    /zones/:libelle				controllers.ZoneControleur.detailZone(libelle: String)
+POST    /zones/:libelle/supprimer	controllers.ZoneControleur.supprimerZone(libelle: String)
+
+# Etats
+GET     /etatsVentilateur						controllers.EtatVentilateurControleur.listerEtatsVentilateur()
+POST    /etatsVentilateur						controllers.EtatVentilateurControleur.ajouterEtatVentilateur()
+GET   	/etatsVentilateur/:libelle				controllers.EtatVentilateurControleur.detailEtatVentilateur(libelle: String)
+POST    /etatsVentilateur/:libelle/supprimer	controllers.EtatVentilateurControleur.supprimerEtatVentilateur(libelle: String)
+
+# EtatsCCVM
+GET     /etatsCCVM						controllers.EtatCCVMControleur.listerEtatsCCVM()
+POST    /etatsCCVM						controllers.EtatCCVMControleur.ajouterEtatCCVM()
+GET		/etatsCCVM/:libelle				controllers.EtatCCVMControleur.detailEtatCCVM(libelle: String)
+POST    /etatsCCVM/:libelle/supprimer	controllers.EtatCCVMControleur.supprimerEtatCCVM(libelle: String)
 
 # Utilisateurs
 #GET     /utilisateurs				controllers.Application.listerUtilisateurs()
 #POST    /utilisateurs				controllers.Application.ajouterUtilisateur()
 #POST    /utilisateurs/:id/supprimer	controllers.Application.supprimerUtilisateur(id: Integer)
-
-# Etats
-#GET     /etats						controllers.Application.listerEtats()
-#POST    /etats						controllers.Application.ajouterEtat()
-#POST    /etats/:id/supprimer		controllers.Application.supprimerEtat(id: Integer)
-
-# EtatsCCVM
-#GET     /etatsCCVM					controllers.Application.listerEtatsCCVM()
-#POST    /etatsCCVM					controllers.Application.ajouterEtatCCVM()
-#POST    /etatsCCVM/:id/supprimer	controllers.Application.supprimerEtatCCVM(id: Integer)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
