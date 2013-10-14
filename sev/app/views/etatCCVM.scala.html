@@ -1,0 +1,45 @@
+@(etatsCCVM: List[EtatCCVM], etatCCVMForm: Form[EtatCCVM])
+@import helper._
+@import play.i18n._
+@main(Messages.get("views.etatCCVM.titre")) {
+    <h1>@etatsCCVM.size() @Messages.get("views.etatCCVM.h.etatsCCVM")</h1>
+    <table id="tableEtatCCVMs" @*class="table table-striped table-bordered"*@>
+	    <thead>
+	        <tr>
+	            <th>@Messages.get("views.table.th.etatCCVM")</th>
+	            <th>@Messages.get("views.table.th.actions")</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        @for(etatCCVM <- etatsCCVM) {
+	            <tr>
+	            	<td>
+	            		@etatCCVM.libelle
+	            	</td>
+	                <td style="white-space: nowrap">
+		                @form(routes.EtatCCVMControleur.supprimerEtatCCVM(etatCCVM.libelle)) {
+		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' @*class="btn"*@>
+		                }
+		                <input type="submit" value='@Messages.get("views.bouton.detail")' @*class="btn"*@>
+		                <input type="submit" value='@Messages.get("views.bouton.modifier")' @*class="btn"*@>
+		            </td>	            	
+	            </tr>
+	        }
+	    </tbody>
+	</table>
+    
+    <h2>@Messages.get("views.etatCCVM.h.ajouter")</h2>
+    @form(routes.EtatCCVMControleur.ajouterEtatCCVM()) {
+        @inputText(
+        	etatCCVMForm("libelle"),
+        	'_label -> Messages.get("views.etatCCVM.form.label.libelle")
+        ) 
+        @select(
+        	etatCCVMForm("ligne.libelle"),
+        	options(Ligne.selectOptions),
+        	'_default -> Messages.get("views.etatCCVM.form.select.ligne.defaut"),
+        	'_label -> Messages.get("views.etatCCVM.form.label.ligne")
+       	)
+        <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
+    }
+}

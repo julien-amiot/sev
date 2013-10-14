@@ -1,0 +1,311 @@
+
+# Reseaux
+
+reseaux:
+
+    - !!models.Reseau
+        libelle: Métro
+
+    - !!models.Reseau
+        libelle: RER
+
+# Lignes
+
+lignes:
+
+    - !!models.Ligne
+        libelle: 1
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 2
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 3
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 3bis
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 4
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 5
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 6
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade                                                
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 7
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 7bis
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 8
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade        
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 9
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 10
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 11
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 12
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 13
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: Métro
+        
+    - !!models.Ligne
+        libelle: 14
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade                                                                
+        reseau: !!models.Reseau
+                    libelle: Métro
+
+    - !!models.Ligne
+        libelle: A
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade          
+        reseau: !!models.Reseau
+                    libelle: RER
+
+    - !!models.Ligne
+        libelle: B
+        guideOperateurLigneURI: test_GOL
+        guideOperateurLigneDegradeURI: test_GOL_Degrade
+        reseau: !!models.Reseau
+                    libelle: RER
+
+# Sections
+
+sections:
+
+    - !!models.Section
+        libelle: A1
+        ligne: !!models.Ligne
+                    libelle: A
+
+    - !!models.Section
+        libelle: A2
+        ligne: !!models.Ligne
+                    libelle: A
+
+    - !!models.Section
+        libelle: A3
+        ligne: !!models.Ligne
+                    libelle: A
+
+    - !!models.Section
+        libelle: A4
+        ligne: !!models.Ligne
+                    libelle: A
+                    
+    - !!models.Section
+        libelle: A5
+        ligne: !!models.Ligne
+                    libelle: A
+           
+    - !!models.Section
+        libelle: B2
+        ligne: !!models.Ligne
+                    libelle: B
+    
+    - !!models.Section
+        libelle: B3
+        ligne: !!models.Ligne
+                    libelle: B
+    
+    - !!models.Section
+        libelle: B4
+        ligne: !!models.Ligne
+                    libelle: B
+    
+    - !!models.Section
+        libelle: B5
+        ligne: !!models.Ligne
+                    libelle: B
+    
+    - !!models.Section
+        libelle: 1
+        ligne: !!models.Ligne
+                    libelle: 1
+    
+    - !!models.Section
+        libelle: 2
+        ligne: !!models.Ligne
+                    libelle: 2
+    
+    - !!models.Section
+        libelle: 3
+        ligne: !!models.Ligne
+                    libelle: 3
+    
+    - !!models.Section
+        libelle: 4
+        ligne: !!models.Ligne
+                    libelle: 4
+    
+    - !!models.Section
+        libelle: 5
+        ligne: !!models.Ligne
+                    libelle: 5
+     
+    - !!models.Section
+        libelle: 6
+        ligne: !!models.Ligne
+                    libelle: 6
+     
+    - !!models.Section
+        libelle: 7MI
+        ligne: !!models.Ligne
+                    libelle: 7
+    
+    - !!models.Section
+        libelle: 7VLA
+        ligne: !!models.Ligne
+                    libelle: 7
+                                
+    - !!models.Section
+        libelle: 8
+        ligne: !!models.Ligne
+                    libelle: 8
+    
+    - !!models.Section
+        libelle: 9
+        ligne: !!models.Ligne
+                    libelle: 9
+    
+    - !!models.Section
+        libelle: 10S
+        ligne: !!models.Ligne
+                    libelle: 10
+    
+    - !!models.Section
+        libelle: 10N
+        ligne: !!models.Ligne
+                    libelle: 10
+    
+    - !!models.Section
+        libelle: 11
+        ligne: !!models.Ligne
+                    libelle: 11
+                    
+    - !!models.Section
+        libelle: 12
+        ligne: !!models.Ligne
+                    libelle: 12
+    
+    - !!models.Section
+        libelle: 13AGLC
+        ligne: !!models.Ligne
+                    libelle: 13
+    
+    - !!models.Section
+        libelle: 13SDU
+        ligne: !!models.Ligne
+                    libelle: 13
+    
+    - !!models.Section
+        libelle: 14
+        ligne: !!models.Ligne
+                    libelle: 14
+                    
+# EtatsCCVM
+
+etatsCCVM:
+
+    - !!models.EtatCCVM
+        libelle: Arrêté
+
+    - !!models.EtatCCVM
+        libelle: Extraction 20%
+
+    - !!models.EtatCCVM
+        libelle: Extraction 50%
+
+    - !!models.EtatCCVM
+        libelle: Extraction 100%
+
+    - !!models.EtatCCVM
+        libelle: Injection 20%
+
+    - !!models.EtatCCVM
+        libelle: Injection 50%
+
+    - !!models.EtatCCVM
+        libelle: Injection 100%
+
+# EtatsVentilateur
+
+etatsVentilateur:
+
+    - !!models.EtatVentilateur
+        libelle: Hors exploitation
+        couleurHexadecimale: #FF0000
+
+    - !!models.EtatVentilateur
+        libelle: Opérationnel
+        couleurHexadecimale: #00FF00        

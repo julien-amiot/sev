@@ -1,0 +1,45 @@
+@(etatsVentilateur: List[EtatVentilateur], etatVentilateurForm: Form[EtatVentilateur])
+@import helper._
+@import play.i18n._
+@main(Messages.get("views.etatVentilateur.titre")) {
+    <h1>@etatsVentilateur.size() @Messages.get("views.etatVentilateur.h.etatsVentilateur")</h1>
+    <table id="tableEtatVentilateurs" @*class="table table-striped table-bordered"*@>
+	    <thead>
+	        <tr>
+	            <th>@Messages.get("views.table.th.etatVentilateur")</th>
+	            <th>@Messages.get("views.table.th.actions")</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        @for(etatVentilateur <- etatsVentilateur) {
+	            <tr>
+	            	<td>
+	            		@etatVentilateur.libelle
+	            	</td>
+	                <td style="white-space: nowrap">
+		                @form(routes.EtatVentilateurControleur.supprimerEtatVentilateur(etatVentilateur.libelle)) {
+		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' @*class="btn"*@>
+		                }
+		                <input type="submit" value='@Messages.get("views.bouton.detail")' @*class="btn"*@>
+		                <input type="submit" value='@Messages.get("views.bouton.modifier")' @*class="btn"*@>
+		            </td>	            	
+	            </tr>
+	        }
+	    </tbody>
+	</table>
+    
+    <h2>@Messages.get("views.etatVentilateur.h.ajouter")</h2>
+    @form(routes.EtatVentilateurControleur.ajouterEtatVentilateur()) {
+        @inputText(
+        	etatVentilateurForm("libelle"),
+        	'_label -> Messages.get("views.etatVentilateur.form.label.libelle")
+        ) 
+        @select(
+        	etatVentilateurForm("ligne.libelle"),
+        	options(Ligne.selectOptions),
+        	'_default -> Messages.get("views.etatVentilateur.form.select.ligne.defaut"),
+        	'_label -> Messages.get("views.etatVentilateur.form.label.ligne")
+       	)
+        <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
+    }
+}

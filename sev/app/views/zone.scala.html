@@ -1,0 +1,45 @@
+@(zones: List[Zone], zoneForm: Form[Zone])
+@import helper._
+@import play.i18n._
+@main(Messages.get("views.zone.titre")) {
+    <h1>@zones.size() @Messages.get("views.zone.h.zones")</h1>
+    <table id="tableZones" @*class="table table-striped table-bordered"*@>
+	    <thead>
+	        <tr>
+	            <th>@Messages.get("views.table.th.zone")</th>
+	            <th>@Messages.get("views.table.th.actions")</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        @for(zone <- zones) {
+	            <tr>
+	            	<td>
+	            		@zone.libelle
+	            	</td>
+	                <td style="white-space: nowrap">
+		                @form(routes.ZoneControleur.supprimerZone(zone.libelle)) {
+		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' @*class="btn"*@>
+		                }
+		                <input type="submit" value='@Messages.get("views.bouton.detail")' @*class="btn"*@>
+		                <input type="submit" value='@Messages.get("views.bouton.modifier")' @*class="btn"*@>
+		            </td>	            	
+	            </tr>
+	        }
+	    </tbody>
+	</table>
+    
+    <h2>@Messages.get("views.zone.h.ajouter")</h2>
+    @form(routes.ZoneControleur.ajouterZone()) {
+        @inputText(
+        	zoneForm("libelle"),
+        	'_label -> Messages.get("views.zone.form.label.libelle")
+        ) 
+        @select(
+        	zoneForm("ligne.libelle"),
+        	options(Ligne.selectOptions),
+        	'_default -> Messages.get("views.zone.form.select.ligne.defaut"),
+        	'_label -> Messages.get("views.zone.form.label.ligne")
+       	)
+        <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
+    }
+}
