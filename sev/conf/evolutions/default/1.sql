@@ -34,9 +34,9 @@ create table section (
 ;
 
 create table station (
+  id                        integer not null,
   libelle                   varchar(255),
-  en_surface                boolean,
-  constraint pk_station primary key (libelle))
+  constraint pk_station primary key (id))
 ;
 
 create table ventilateur (
@@ -49,6 +49,18 @@ create table zone (
   constraint pk_zone primary key (libelle))
 ;
 
+
+create table section_station (
+  section_libelle                varchar(255) not null,
+  station_id                     integer not null,
+  constraint pk_section_station primary key (section_libelle, station_id))
+;
+
+create table station_section (
+  station_id                     integer not null,
+  section_libelle                varchar(255) not null,
+  constraint pk_station_section primary key (station_id, section_libelle))
+;
 create sequence etat_ccvm_seq;
 
 create sequence etat_ventilateur_seq;
@@ -72,6 +84,14 @@ create index ix_section_ligne_2 on section (ligne_libelle);
 
 
 
+alter table section_station add constraint fk_section_station_section_01 foreign key (section_libelle) references section (libelle) on delete restrict on update restrict;
+
+alter table section_station add constraint fk_section_station_station_02 foreign key (station_id) references station (id) on delete restrict on update restrict;
+
+alter table station_section add constraint fk_station_section_station_01 foreign key (station_id) references station (id) on delete restrict on update restrict;
+
+alter table station_section add constraint fk_station_section_section_02 foreign key (section_libelle) references section (libelle) on delete restrict on update restrict;
+
 # --- !Downs
 
 SET REFERENTIAL_INTEGRITY FALSE;
@@ -86,7 +106,11 @@ drop table if exists reseau;
 
 drop table if exists section;
 
+drop table if exists section_station;
+
 drop table if exists station;
+
+drop table if exists station_section;
 
 drop table if exists ventilateur;
 

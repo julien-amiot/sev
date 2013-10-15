@@ -5,7 +5,9 @@ views.bouton.supprimer=Supprimer
 views.bouton.modifier=Modifier
 views.table.th.reseau=Réseau
 views.table.th.actions=Actions
+views.table.th.station=Station
 views.table.th.section=Section
+views.table.th.sections=Sections
 views.table.th.reseau=Réseau
 views.table.th.ligne=Ligne
 views.table.th.indisponibilites=Indisponibilités
@@ -50,6 +52,14 @@ views.section.h.ajouter=Ajouter une section
 views.section.form.label.libelle=Libellé
 views.section.form.label.ligne=Ligne
 views.section.form.select.ligne.defaut=Sélectionnez une ligne
+
+# STATIONS
+views.station.titre=Liste des stations
+views.station.h.stations=station(s)
+views.station.h.ajouter=Ajouter une station
+views.station.form.label.libelle=Libellé
+views.station.form.label.ligne=Ligne
+views.station.form.label.sections=Sections
 
 # ZONES
 views.zone.titre=Liste des zones

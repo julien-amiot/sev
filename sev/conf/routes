@@ -12,9 +12,10 @@ GET		/ventilateurs/:id				controllers.VentilateurControleur.detailVentilateur(id
 POST    /ventilateurs/:id/supprimer		controllers.VentilateurControleur.supprimerVentilateur(id: String)
 
 # Stations
-#GET     /stations					controllers.Application.listerStations()
-#POST    /stations					controllers.Application.ajouterStation()
-#POST    /stations/:id/supprimer 	controllers.Application.supprimerStation(id: Integer)
+GET     /stations						controllers.StationControleur.listerStations()
+POST    /stations						controllers.StationControleur.ajouterStation()
+GET		/stations/:id			 		controllers.StationControleur.detailStation(id: Integer)
+POST    /stations/:id/supprimer 		controllers.StationControleur.supprimerStation(id: Integer)
 
 # Lignes
 GET     /lignes							controllers.LigneControleur.listerLignes()
