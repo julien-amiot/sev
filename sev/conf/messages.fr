@@ -9,14 +9,17 @@ views.table.th.section=Section
 views.table.th.reseau=Réseau
 views.table.th.ligne=Ligne
 views.table.th.indisponibilites=Indisponibilités
+views.table.th.zone=Zone
+views.table.th.etatVentilateur=Etat de ventilateur
+views.table.th.etatCCVM=Etat de CCVM
 views.menu.item.ventilateurs=Ventilateurs
 views.menu.item.stations=Stations
 views.menu.item.sections=Sections
 views.menu.item.zones=Zones
 views.menu.item.lignes=Lignes
 views.menu.item.reseaux=Réseaux
-views.menu.item.etatsVentilateur=Etats ventilateurs
-views.menu.item.etatsCCVM=Etats CCVM
+views.menu.item.etatsVentilateur=Etats de ventilateurs
+views.menu.item.etatsCCVM=Etats de CCVM
 
 # VENTILATEURS
 views.ventilateur.titre=Liste des ventilateurs
@@ -47,5 +50,23 @@ views.section.h.ajouter=Ajouter une section
 views.section.form.label.libelle=Libellé
 views.section.form.label.ligne=Ligne
 views.section.form.select.ligne.defaut=Sélectionnez une ligne
+
+# ZONES
+views.zone.titre=Liste des zones
+views.zone.h.zones=zone(s)
+views.zone.h.ajouter=Ajouter une zone
+views.zone.form.label.libelle=Libellé
+
+# ETATS VENTILATEUR
+views.etatVentilateur.titre=Liste des états de ventilateur
+views.etatVentilateur.h.etatsVentilateur=état(s) de ventilateur
+views.etatVentilateur.h.ajouter=Ajouter un état de ventilateur
+views.etatVentilateur.form.label.libelle=Libellé
+
+# ETATS CCVM
+views.etatCCVM.titre=Liste des états de CCVM
+views.etatCCVM.h.etatsCCVM=état(s) de CCVM
+views.etatCCVM.h.ajouter=Ajouter un état de CCVM
+views.etatCCVM.form.label.libelle=Libellé
 
 # STATIONS
