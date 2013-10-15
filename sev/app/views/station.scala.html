@@ -1,0 +1,57 @@
+@(stations: List[Station], stationForm: Form[Station])
+@import helper._
+@import play.i18n._
+@main(Messages.get("views.station.titre")) {
+    <h1>@stations.size() @Messages.get("views.station.h.stations")</h1>
+    <table id="tableStations" @*class="table table-striped table-bordered"*@>
+	    <thead>
+	        <tr>
+	            <th>@Messages.get("views.table.th.station")</th>
+	        	<th>@Messages.get("views.table.th.reseau")</th>
+	        	<th>@Messages.get("views.table.th.ligne")</th>
+	        	<th>@Messages.get("views.table.th.sections")</th>
+	            <th>@Messages.get("views.table.th.indisponibilites")</th>
+	            <th>@Messages.get("views.table.th.actions")</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        @for(station <- stations) {
+	            <tr>
+	            	<td>
+	            		@station.libelle
+	            	</td>
+	            	<td>
+	            	</td>
+	            	<td></td>
+	            	<td>
+	            		@for(section <- station.getListeSections) {
+	            			<span>@section</span> 
+	            		}
+	            	</td>
+	            	<td></td>
+	                <td style="white-space: nowrap">
+		                @form(routes.StationControleur.supprimerStation(station.id)) {
+		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' @*class="btn"*@>
+		                }
+		                <input type="submit" value='@Messages.get("views.bouton.detail")' @*class="btn"*@>
+		                <input type="submit" value='@Messages.get("views.bouton.modifier")' @*class="btn"*@>
+		            </td>	            	
+	            </tr>
+	        }
+	    </tbody>
+	</table>
+    
+    <h2>@Messages.get("views.station.h.ajouter")</h2>
+    @form(routes.StationControleur.ajouterStation()) {
+        @inputText(
+        	stationForm("libelle"),
+        	'_label -> Messages.get("views.station.form.label.libelle")
+        ) 
+		@selectMultiple(
+			field = stationForm("sections.libelle"),
+			options = options(Section.selectOptions()),
+			'_label -> Messages.get("views.station.form.label.sections")
+		)
+        <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
+    }
+}
