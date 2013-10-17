@@ -10,7 +10,10 @@
 	        	<th>@Messages.get("views.table.th.reseau")</th>
 	        	<th>@Messages.get("views.table.th.ligne")</th>
 	        	<th>@Messages.get("views.table.th.sections")</th>
+	        	<th>@Messages.get("views.table.th.stationsPrecedentes")</th>
+	        	<th>@Messages.get("views.table.th.stationsSuivantes")</th>
 	            <th>@Messages.get("views.table.th.indisponibilites")</th>
+	            <th>@Messages.get("views.table.th.isEnSurface")</th>
 	            <th>@Messages.get("views.table.th.actions")</th>
 	        </tr>
 	    </thead>
@@ -21,15 +24,32 @@
 	            		@station.libelle
 	            	</td>
 	            	<td>
+	            		@station.getReseau
 	            	</td>
-	            	<td></td>
+	            	<td>
+	            		@station.getLigne	            	
+	            	</td>
 	            	<td>
 	            		@for(section <- station.getListeSections) {
 	            			<span>@section</span> 
 	            		}
 	            	</td>
-	            	<td></td>
-	                <td style="white-space: nowrap">
+	            	<td>
+	            		@for(stationPrecedente <- station.getStationsPrecedentes) {
+	            			<span>@stationPrecedente</span>
+	            		}
+	            	</td>
+	            	<td>
+	            		@for(stationSuivante <- station.getStationsSuivantes) {
+	            			<span>@stationSuivante</span>
+	            		}
+	            	</td>
+	            	<td>
+	            	</td>
+	            	<td>
+	            		@station.isEnSurface
+	            	</td>	 
+	            	<td style="white-space: nowrap">
 		                @form(routes.StationControleur.supprimerStation(station.id)) {
 		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' @*class="btn"*@>
 		                }
@@ -46,11 +66,20 @@
         @inputText(
         	stationForm("libelle"),
         	'_label -> Messages.get("views.station.form.label.libelle")
-        ) 
+        )
+		@checkbox(
+			stationForm("isEnSurface"),
+			'_label -> Messages.get("views.station.form.label.isEnSurface")
+		)         
 		@selectMultiple(
-			field = stationForm("sections.libelle"),
-			options = options(Section.selectOptions()),
+			stationForm("sections.libelle[]"),
+			options(Section.selectOptions(null)),
 			'_label -> Messages.get("views.station.form.label.sections")
+		)
+		@selectMultiple(
+			stationForm("stationsPrecedentes.id[]"),
+			options(Station.selectOptions(null)),
+			'_label -> Messages.get("views.station.form.label.stationsPrecedentes")
 		)
         <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
     }

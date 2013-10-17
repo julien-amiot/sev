@@ -51,20 +51,20 @@ extends Controller
         	{
         		String[] value = urlFormEncoded.get(key);
         		
-        		if (value.length == 1) 
+        		if (value.length == 1 && !key.endsWith("[]")) 
         		{
         			newData.put(key, value[0]);
         		}
-        		else if (value.length > 1) 
+        		else if (value.length > 1 || key.endsWith("[]")) 
         		{
-        			String keyPrefix = key;
+        			String keyPrefix = key.replace("[]", "");
         			String keyPostfix = "";
         			int pos = key.indexOf(".");
         			
         			if (pos > -1) 
         			{
         				keyPrefix = key.substring(0, pos);
-        				keyPostfix = key.substring(pos, key.length());
+        				keyPostfix = key.substring(pos, key.length()).replace("[]", "");
         			}
         			
         			for (int i = 0; i < value.length; i++) 
@@ -96,7 +96,7 @@ extends Controller
 	
 	public static Result detailStation(Integer id)
 	{
-		Station.detail(id);
+		Station.recupererSelonId(id);
 		return redirect(routes.StationControleur.listerStations());
 		//TODO
 	}

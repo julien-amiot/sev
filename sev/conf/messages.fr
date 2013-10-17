@@ -14,6 +14,10 @@ views.table.th.indisponibilites=Indisponibilités
 views.table.th.zone=Zone
 views.table.th.etatVentilateur=Etat de ventilateur
 views.table.th.etatCCVM=Etat de CCVM
+views.table.th.stationsPrecedentes=Stations précédentes
+views.table.th.stationsSuivantes=Stations suivantes
+views.table.th.isEnSurface=Station en surface
+views.table.th.couleurHexadecimale=Couleur
 views.menu.item.ventilateurs=Ventilateurs
 views.menu.item.stations=Stations
 views.menu.item.sections=Sections
@@ -60,6 +64,8 @@ views.station.h.ajouter=Ajouter une station
 views.station.form.label.libelle=Libellé
 views.station.form.label.ligne=Ligne
 views.station.form.label.sections=Sections
+views.station.form.label.isEnSurface=Station en surface
+views.station.form.label.stationsPrecedentes=Stations précédentes
 
 # ZONES
 views.zone.titre=Liste des zones

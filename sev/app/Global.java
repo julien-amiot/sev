@@ -1,11 +1,17 @@
-import play.*;
-import play.libs.*;
+import java.util.List;
+import java.util.Map;
 
-import java.util.*;
+import models.EtatCCVM;
+import models.EtatVentilateur;
+import models.Ligne;
+import models.Reseau;
+import models.Section;
+import models.Station;
+import play.Application;
+import play.GlobalSettings;
+import play.libs.Yaml;
 
-import com.avaje.ebean.*;
-
-import models.*;
+import com.avaje.ebean.Ebean;
 
 public class Global 
 extends GlobalSettings 
@@ -44,6 +50,12 @@ extends GlobalSettings
             if (Ebean.find(EtatVentilateur.class).findRowCount() == 0) 
             {
             	Ebean.save(all.get("etatsVentilateur"));
+            }
+            
+            if (Ebean.find(Station.class).findRowCount() == 0) 
+            {
+            	List<Object> listeDesStations = all.get("stations");
+            	Ebean.save(listeDesStations);
             }
         }
     }

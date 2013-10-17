@@ -6,7 +6,6 @@
     <table id="tableLignes" @*class="table table-striped table-bordered"*@>
 	    <thead>
 	        <tr>
-	        	<th>@Messages.get("views.table.th.reseau")</th>
 	        	<th>@Messages.get("views.table.th.ligne")</th>
 	            <th>@Messages.get("views.table.th.indisponibilites")</th>
 	            <th>@Messages.get("views.table.th.actions")</th>
@@ -16,10 +15,7 @@
 	        @for(ligne <- lignes) {
 	            <tr>
 	            	<td>
-	            		@ligne.getReseau
-	            	</td>
-	            	<td>
-	            		@ligne.libelle
+	            		@ligne.getReseau @ligne.libelle 
 	            	</td>
 	            	<td></td>
 	                <td style="white-space: nowrap">
@@ -38,7 +34,7 @@
     @form(routes.LigneControleur.ajouterLigne()) {
         @select(
         	ligneForm("reseau.libelle"),
-        	options(Reseau.selectOptions),
+        	options(Reseau.selectOptions()),
         	'_default -> Messages.get("views.ligne.form.select.reseau.defaut"),
         	'_label -> Messages.get("views.ligne.form.label.reseau")
        	)    	

@@ -7,7 +7,6 @@
 	    <thead>
 	        <tr>
 	            <th>@Messages.get("views.table.th.section")</th>
-	        	<th>@Messages.get("views.table.th.reseau")</th>
 	        	<th>@Messages.get("views.table.th.ligne")</th>
 	            <th>@Messages.get("views.table.th.indisponibilites")</th>
 	            <th>@Messages.get("views.table.th.actions")</th>
@@ -20,10 +19,7 @@
 	            		@section.libelle
 	            	</td>
 	            	<td>
-	            		@section.getLigne.getReseau
-	            	</td>
-	            	<td>
-	            		@section.getLigne
+	            		@section.getLigne.getReseau @section.getLigne
 	            	</td>
 	            	<td></td>
 	                <td style="white-space: nowrap">
@@ -46,7 +42,7 @@
         ) 
         @select(
         	sectionForm("ligne.libelle"),
-        	options(Ligne.selectOptions),
+        	options(Ligne.selectOptions(null)),
         	'_default -> Messages.get("views.section.form.select.ligne.defaut"),
         	'_label -> Messages.get("views.section.form.label.ligne")
        	)

@@ -34,12 +34,6 @@
         	etatCCVMForm("libelle"),
         	'_label -> Messages.get("views.etatCCVM.form.label.libelle")
         ) 
-        @select(
-        	etatCCVMForm("ligne.libelle"),
-        	options(Ligne.selectOptions),
-        	'_default -> Messages.get("views.etatCCVM.form.select.ligne.defaut"),
-        	'_label -> Messages.get("views.etatCCVM.form.label.ligne")
-       	)
         <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
     }
 }

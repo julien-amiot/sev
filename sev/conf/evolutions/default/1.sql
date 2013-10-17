@@ -36,6 +36,7 @@ create table section (
 create table station (
   id                        integer not null,
   libelle                   varchar(255),
+  is_en_surface             boolean,
   constraint pk_station primary key (id))
 ;
 
@@ -60,6 +61,12 @@ create table station_section (
   station_id                     integer not null,
   section_libelle                varchar(255) not null,
   constraint pk_station_section primary key (station_id, section_libelle))
+;
+
+create table station_to_stationPrecedente (
+  station_id                     integer not null,
+  stationPrecedente_id           integer not null,
+  constraint pk_station_to_stationPrecedente primary key (station_id, stationPrecedente_id))
 ;
 create sequence etat_ccvm_seq;
 
@@ -92,6 +99,10 @@ alter table station_section add constraint fk_station_section_station_01 foreign
 
 alter table station_section add constraint fk_station_section_section_02 foreign key (section_libelle) references section (libelle) on delete restrict on update restrict;
 
+alter table station_to_stationPrecedente add constraint fk_station_to_stationPreceden_01 foreign key (station_id) references station (id) on delete restrict on update restrict;
+
+alter table station_to_stationPrecedente add constraint fk_station_to_stationPreceden_02 foreign key (stationPrecedente_id) references station (id) on delete restrict on update restrict;
+
 # --- !Downs
 
 SET REFERENTIAL_INTEGRITY FALSE;
@@ -111,6 +122,8 @@ drop table if exists section_station;
 drop table if exists station;
 
 drop table if exists station_section;
+
+drop table if exists station_to_stationPrecedente;
 
 drop table if exists ventilateur;
 

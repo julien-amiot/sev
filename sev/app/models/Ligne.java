@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.avaje.ebean.Expr;
+import com.avaje.ebean.Expression;
+
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
@@ -35,6 +38,11 @@ extends Model
 		return find.all();
 	}
 	
+	public static List<Ligne> listerSelonReseau(Reseau reseau)
+	{
+		return find.where(Expr.eq("reseau", reseau)).findList();
+	}
+	
 	public static void creer(Ligne ligne)
 	{
 		ligne.save();
@@ -50,11 +58,21 @@ extends Model
 		return find.ref(libelle);
 	}
 	
-	public static Map<String, String> selectOptions()
+	public static Map<String, String> selectOptions(Reseau reseau)
 	{
 		Map<String, String> mapOptions = new LinkedHashMap<String, String>();
+		List<Ligne> listeLignes;
 		
-		for (Ligne ligne : lister())
+		if (reseau == null)
+		{
+			listeLignes = lister();
+		}
+		else
+		{
+			listeLignes = listerSelonReseau(reseau);
+		}
+		
+		for (Ligne ligne : listeLignes)
 		{
 			mapOptions.put("" + ligne.libelle, ligne.libelle);
 		}

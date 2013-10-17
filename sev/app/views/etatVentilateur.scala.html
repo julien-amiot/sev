@@ -7,6 +7,7 @@
 	    <thead>
 	        <tr>
 	            <th>@Messages.get("views.table.th.etatVentilateur")</th>
+	            <th>@Messages.get("views.table.th.couleurHexadecimale")</th>
 	            <th>@Messages.get("views.table.th.actions")</th>
 	        </tr>
 	    </thead>
@@ -15,6 +16,8 @@
 	            <tr>
 	            	<td>
 	            		@etatVentilateur.libelle
+	            	</td>
+	            	<td style="background-color: @etatVentilateur.couleurHexadecimale">
 	            	</td>
 	                <td style="white-space: nowrap">
 		                @form(routes.EtatVentilateurControleur.supprimerEtatVentilateur(etatVentilateur.libelle)) {
@@ -34,12 +37,6 @@
         	etatVentilateurForm("libelle"),
         	'_label -> Messages.get("views.etatVentilateur.form.label.libelle")
         ) 
-        @select(
-        	etatVentilateurForm("ligne.libelle"),
-        	options(Ligne.selectOptions),
-        	'_default -> Messages.get("views.etatVentilateur.form.select.ligne.defaut"),
-        	'_label -> Messages.get("views.etatVentilateur.form.label.ligne")
-       	)
         <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
     }
 }

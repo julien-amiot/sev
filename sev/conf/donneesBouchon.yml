@@ -304,8 +304,80 @@ etatsVentilateur:
 
     - !!models.EtatVentilateur
         libelle: Hors exploitation
-        couleurHexadecimale: #FF0000
+        couleurHexadecimale: "#FF0000"
 
     - !!models.EtatVentilateur
         libelle: Opérationnel
-        couleurHexadecimale: #00FF00        
+        couleurHexadecimale: "#00FF00"
+        
+# Stations
+
+stations:
+
+    - !!models.Station
+        id: 1
+        libelle: Nanterre Université
+        sections: 
+          - !!models.Section
+                  libelle: A1
+        isEnSurface: true
+
+    - !!models.Station
+        id: 2    
+        libelle: Houilles Carrières-sur-Seine
+        
+        sections: 
+            - !!models.Section
+                libelle: A3
+            - !!models.Section
+                libelle: A5     
+                                 
+        isEnSurface: true
+
+    - !!models.Station
+        id: 3    
+        libelle: Nanterre Préfecture
+        
+        sections: 
+        
+            - !!models.Section
+                libelle: A1
+            - !!models.Section
+                libelle: A3                    
+            - !!models.Section
+                libelle: A5                    
+            - !!models.Section
+                libelle: A4                    
+            - !!models.Section
+                libelle: A2
+                
+        stationsPrecedentes: 
+        
+            - !!models.Station
+                id: 1
+            - !!models.Station
+                id: 2              
+                                            
+        isEnSurface: false
+
+    - !!models.Station
+        id: 4
+        libelle: La Défense
+        
+        sections: 
+            - !!models.Section
+                libelle: A1
+            - !!models.Section
+                libelle: A3                    
+            - !!models.Section
+                libelle: A5                    
+            - !!models.Section
+                libelle: A4                    
+            - !!models.Section
+                libelle: A2
+                
+        stationsPrecedentes: 
+            - !!models.Station
+                id: 3
+                
+        isEnSurface: false  

@@ -34,12 +34,6 @@
         	zoneForm("libelle"),
         	'_label -> Messages.get("views.zone.form.label.libelle")
         ) 
-        @select(
-        	zoneForm("ligne.libelle"),
-        	options(Ligne.selectOptions),
-        	'_default -> Messages.get("views.zone.form.select.ligne.defaut"),
-        	'_label -> Messages.get("views.zone.form.label.ligne")
-       	)
         <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
     }
 }
