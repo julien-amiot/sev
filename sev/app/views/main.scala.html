@@ -5,14 +5,14 @@
     <head>
         <title>@title</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-        <!-- link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")"-->
-        <!-- link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/jquery.dataTables.css")"-->
-        <!-- link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/demo_table.css")"-->
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/jquery.dataTables.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/demo_table.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
-        <!-- script src="@routes.Assets.at("javascripts/bootstrap.js")" type="text/javascript"></script-->
-        <!-- script src="@routes.Assets.at("javascripts/jquery.dataTables.min.js")" type="text/javascript"></script-->
-        <!-- script src="@routes.Assets.at("javascripts/paging.js")" type="text/javascript"></script-->
+        <script src="@routes.Assets.at("javascripts/bootstrap.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery.dataTables.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/paging.js")" type="text/javascript"></script>
 		<script>
 			(
 				function ($)
@@ -88,7 +88,7 @@
 				);
 			}
 				
-			@*$.extend
+			$.extend
 			(
 				$.fn.dataTableExt.oStdClasses, 
 				{
@@ -111,7 +111,7 @@
 			(
 				function() 
 				{
-			    	$("[id^='table'])
+			    	$("[id^='table']")
 			    	.dataTable
 			    	(
 			   			{
@@ -120,11 +120,11 @@
 			   			}
 			    	);
 				}
-			);*@
+			);
 		</script>        
     </head>
     <body>
-    	<ul>
+    	<ul class="nav nav-pills">
     		<li><a href="/reseaux">@Messages.get("views.menu.item.reseaux")</a></li>
     		<li><a href="/lignes">@Messages.get("views.menu.item.lignes")</a></li>
     		<li><a href="/sections">@Messages.get("views.menu.item.sections")</a></li>

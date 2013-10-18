@@ -1,7 +1,19 @@
 @(stations: List[Station], stationForm: Form[Station])
 @import helper._
+@import helper.twitterBootstrap._
 @import play.i18n._
 @main(Messages.get("views.station.titre")) {
+	<style type="text/css">
+		table#tableStations>tbody>tr.stationAerienne
+		{
+			background-color: #FFEEAA;
+		}
+		
+		.colonne_EnSurface
+		{
+			display: none;
+		}
+	</style>
 	<script>
 	jQuery(document)
 	.ready
@@ -29,11 +41,12 @@
 					alimenteDonneesSelectAJAX('@routes.StationControleur.listerStationsSelonLigneJSON()', $(event.target).val(), 'stationsPrecedentes_id__');
 				}
 			);
+			$(".colonne_EnSurface:contains('true')").parent().addClass('stationAerienne');
 		}
 	);
 	</script>
     <h1>@stations.size() @Messages.get("views.station.h.stations")</h1>
-    <table id="tableStations" @*class="table table-striped table-bordered"*@>
+    <table id="tableStations" class="table table-condensed table-hover">
 	    <thead>
 	        <tr>
 	            <th>@Messages.get("views.table.th.station")</th>
@@ -42,8 +55,7 @@
 	        	<th>@Messages.get("views.table.th.sections")</th>
 	        	<th>@Messages.get("views.table.th.stationsPrecedentes")</th>
 	        	<th>@Messages.get("views.table.th.stationsSuivantes")</th>
-	            <th>@Messages.get("views.table.th.indisponibilites")</th>
-	            <th>@Messages.get("views.table.th.isEnSurface")</th>
+	            <th class='colonne_EnSurface'>@Messages.get("views.table.th.isEnSurface")</th>
 	            <th>@Messages.get("views.table.th.actions")</th>
 	        </tr>
 	    </thead>
@@ -74,17 +86,15 @@
 	            			<span>@stationSuivante</span>
 	            		}
 	            	</td>
-	            	<td>
-	            	</td>
-	            	<td>
+	            	<td class="colonne_EnSurface">
 	            		@station.isEnSurface
 	            	</td>	 
-	            	<td style="white-space: nowrap">
+	            	<td>
 		                @form(routes.StationControleur.supprimerStation(station.id)) {
-		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' @*class="btn"*@>
+		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' class="btn btn-default btn-xs">
 		                }
-		                <input type="submit" value='@Messages.get("views.bouton.detail")' @*class="btn"*@>
-		                <input type="submit" value='@Messages.get("views.bouton.modifier")' @*class="btn"*@>
+		                <input type="submit" value='@Messages.get("views.bouton.detail")' class="btn btn-default btn-xs">
+		                <input type="submit" value='@Messages.get("views.bouton.modifier")' class="btn btn-default btn-xs">
 		            </td>	            	
 	            </tr>
 	        }
@@ -92,14 +102,16 @@
 	</table>
     
     <h2>@Messages.get("views.station.h.ajouter")</h2>
-    @form(routes.StationControleur.ajouterStation()) {
+    @form(routes.StationControleur.ajouterStation(), 'class -> "form-horizontal") {
         @inputText(
         	stationForm("libelle"),
-        	'_label -> Messages.get("views.station.form.label.libelle")
+        	'_label -> Messages.get("views.station.form.label.libelle"),
+        	'_showConstraints -> false
         )
 		@checkbox(
 			stationForm("isEnSurface"),
-			'_label -> Messages.get("views.station.form.label.isEnSurface")
+			'_label -> Messages.get("views.station.form.label.isEnSurface"),
+			'_showConstraints -> false
 		)
 		@select(
 			stationForm("reseau"),
@@ -125,6 +137,6 @@
 			'_label -> Messages.get("views.station.form.label.stationsPrecedentes"),
 			'_default -> Messages.get("views.select.station.defaut")
 		)
-        <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
+        <input type="submit" value='@Messages.get("views.bouton.ajouter")' class="btn btn-primary">
     }
 }
