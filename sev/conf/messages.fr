@@ -1,4 +1,6 @@
-# GENERAL
+# VUES
+
+## GENERAL
 views.bouton.ajouter=Ajouter
 views.bouton.detail=Détail
 views.bouton.supprimer=Supprimer
@@ -26,20 +28,27 @@ views.menu.item.lignes=Lignes
 views.menu.item.reseaux=Réseaux
 views.menu.item.etatsVentilateur=Etats de ventilateurs
 views.menu.item.etatsCCVM=Etats de CCVM
+views.select.reseau.defaut=Veuillez sélectionner un réseau
+views.select.ligne.defaut=Veuillez sélectionner une ligne
+views.select.section.defaut=Veuillez sélectionner une section
+views.select.station.defaut=Veuillez sélectionner une station
+views.select.sections.defaut=Veuillez sélectionner une ou plusieurs sections
+views.select.stations.defaut=Veuillez sélectionner une ou plusieurs stations
 
-# VENTILATEURS
+
+## VENTILATEURS
 views.ventilateur.titre=Liste des ventilateurs
 views.ventilateur.h.ventilateurs=ventilateur(s)
 views.ventilateur.h.ajouter=Ajouter un ventilateur
 views.ventilateur.form.label.libelle=Libellé
 
-# RESEAUX
+## RESEAUX
 views.reseau.titre=Liste des réseaux
 views.reseau.h.reseaux=réseau(x)
 views.reseau.h.ajouter=Ajouter un réseau
 views.reseau.form.label.libelle=Libellé
 
-# LIGNES
+## LIGNES
 views.ligne.titre=Liste des lignes
 views.ligne.h.lignes=ligne(s)
 views.ligne.h.ajouter=Ajouter une ligne
@@ -49,7 +58,7 @@ views.ligne.form.label.guideOperateurLigneURI=URL GOL
 views.ligne.form.label.guideOperateurLigneDegradeURI=URL GOL dégradé
 views.ligne.form.select.reseau.defaut=Sélectionnez un réseau
 
-# SECTIONS
+## SECTIONS
 views.section.titre=Liste des sections
 views.section.h.sections=section(s)
 views.section.h.ajouter=Ajouter une section
@@ -57,7 +66,7 @@ views.section.form.label.libelle=Libellé
 views.section.form.label.ligne=Ligne
 views.section.form.select.ligne.defaut=Sélectionnez une ligne
 
-# STATIONS
+## STATIONS
 views.station.titre=Liste des stations
 views.station.h.stations=station(s)
 views.station.h.ajouter=Ajouter une station
@@ -66,23 +75,28 @@ views.station.form.label.ligne=Ligne
 views.station.form.label.sections=Sections
 views.station.form.label.isEnSurface=Station en surface
 views.station.form.label.stationsPrecedentes=Stations précédentes
+views.station.form.label.reseau=Réseau
+views.station.form.label.ligne=Ligne
 
-# ZONES
+## ZONES
 views.zone.titre=Liste des zones
 views.zone.h.zones=zone(s)
 views.zone.h.ajouter=Ajouter une zone
 views.zone.form.label.libelle=Libellé
 
-# ETATS VENTILATEUR
+## ETATS VENTILATEUR
 views.etatVentilateur.titre=Liste des états de ventilateur
 views.etatVentilateur.h.etatsVentilateur=état(s) de ventilateur
 views.etatVentilateur.h.ajouter=Ajouter un état de ventilateur
 views.etatVentilateur.form.label.libelle=Libellé
 
-# ETATS CCVM
+## ETATS CCVM
 views.etatCCVM.titre=Liste des états de CCVM
 views.etatCCVM.h.etatsCCVM=état(s) de CCVM
 views.etatCCVM.h.ajouter=Ajouter un état de CCVM
 views.etatCCVM.form.label.libelle=Libellé
 
-# STATIONS
+# SERVEUR
+
+## ERREURS
+serveur.erreur.general=Une erreur est survenue lors de la récupération des données côté serveur.

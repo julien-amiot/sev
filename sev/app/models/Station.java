@@ -48,7 +48,7 @@ extends Model
 	
 	public static List<Station> listerSelonLigne(Ligne ligne)
 	{
-		return find.where().eq("sections.ligne", ligne.libelle).findList();
+		return find.where().eq("sections.ligne.libelle", ligne.libelle).findList();
 	}
 	
 	public static List<Station> listerSelonSection(Section section)

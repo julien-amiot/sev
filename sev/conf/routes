@@ -16,18 +16,21 @@ GET     /stations						controllers.StationControleur.listerStations()
 POST    /stations						controllers.StationControleur.ajouterStation()
 GET		/stations/:id			 		controllers.StationControleur.detailStation(id: Integer)
 POST    /stations/:id/supprimer 		controllers.StationControleur.supprimerStation(id: Integer)
+POST	/stations/selonLigne			controllers.StationControleur.listerStationsSelonLigneJSON()
 
 # Lignes
 GET     /lignes							controllers.LigneControleur.listerLignes()
 POST    /lignes							controllers.LigneControleur.ajouterLigne()
 GET		/lignes/:libelle				controllers.LigneControleur.detailLigne(libelle: String)
 POST    /lignes/:libelle/supprimer		controllers.LigneControleur.supprimerLigne(libelle: String)
+POST	/lignes/selonReseau				controllers.LigneControleur.listerLignesJSON()
 
 # Sections
 GET     /sections						controllers.SectionControleur.listerSections()
 POST    /sections						controllers.SectionControleur.ajouterSection()
 GET	    /sections/:libelle				controllers.SectionControleur.detailSection(libelle: String)
 POST    /sections/:libelle/supprimer	controllers.SectionControleur.supprimerSection(libelle: String)
+POST	/sections/selonLigne			controllers.SectionControleur.listerSectionsJSON()
 
 # Reseaux
 GET     /reseaux						controllers.ReseauControleur.listerReseaux()

@@ -204,6 +204,11 @@ sections:
                     libelle: 3
     
     - !!models.Section
+        libelle: 3bis
+        ligne: !!models.Ligne
+                    libelle: 3bis
+    
+    - !!models.Section
         libelle: 4
         ligne: !!models.Ligne
                     libelle: 4
@@ -217,6 +222,11 @@ sections:
         libelle: 6
         ligne: !!models.Ligne
                     libelle: 6
+
+    - !!models.Section
+        libelle: 7bis
+        ligne: !!models.Ligne
+                    libelle: 7bis                    
      
     - !!models.Section
         libelle: 7MI

@@ -2,6 +2,36 @@
 @import helper._
 @import play.i18n._
 @main(Messages.get("views.station.titre")) {
+	<script>
+	jQuery(document)
+	.ready
+	(
+		function ($)
+		{
+			$('#ligne, #sections_libelle__, #stationsPrecedentes_id__').hide();
+			$('#reseau')
+			.on
+			(
+				'change',
+				function (event)
+				{
+				 	$('#sections_libelle__, #stationsPrecedentes_id__').hide();
+					alimenteDonneesSelectAJAX('@routes.LigneControleur.listerLignesJSON()', $(event.target).val(), 'ligne');
+				}
+			);
+			$('#ligne')
+			.on
+			(
+				'change',
+				function (event)
+				{
+					alimenteDonneesSelectAJAX('@routes.SectionControleur.listerSectionsJSON()', $(event.target).val(), 'sections_libelle__');
+					alimenteDonneesSelectAJAX('@routes.StationControleur.listerStationsSelonLigneJSON()', $(event.target).val(), 'stationsPrecedentes_id__');
+				}
+			);
+		}
+	);
+	</script>
     <h1>@stations.size() @Messages.get("views.station.h.stations")</h1>
     <table id="tableStations" @*class="table table-striped table-bordered"*@>
 	    <thead>
@@ -70,16 +100,30 @@
 		@checkbox(
 			stationForm("isEnSurface"),
 			'_label -> Messages.get("views.station.form.label.isEnSurface")
+		)
+		@select(
+			stationForm("reseau"),
+			options(Reseau.selectOptions()),
+			'_label -> Messages.get("views.station.form.label.reseau"),
+			'_default -> Messages.get("views.select.reseau.defaut")
+		)
+		@select(
+			stationForm("ligne"),
+			options(utils.OptionSelect.listeVide()),
+			'_label -> Messages.get("views.station.form.label.ligne"),
+			'_default -> Messages.get("views.select.ligne.defaut")
 		)         
 		@selectMultiple(
 			stationForm("sections.libelle[]"),
-			options(Section.selectOptions(null)),
-			'_label -> Messages.get("views.station.form.label.sections")
+			options(utils.OptionSelect.listeVide()),
+			'_label -> Messages.get("views.station.form.label.sections"),
+			'_default -> Messages.get("views.select.section.defaut")
 		)
 		@selectMultiple(
 			stationForm("stationsPrecedentes.id[]"),
-			options(Station.selectOptions(null)),
-			'_label -> Messages.get("views.station.form.label.stationsPrecedentes")
+			options(utils.OptionSelect.listeVide()),
+			'_label -> Messages.get("views.station.form.label.stationsPrecedentes"),
+			'_default -> Messages.get("views.select.station.defaut")
 		)
         <input type="submit" value='@Messages.get("views.bouton.ajouter")' @*class="btn"*@>
     }
