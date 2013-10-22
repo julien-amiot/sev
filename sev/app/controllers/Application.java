@@ -13,6 +13,6 @@ extends
 	
 	public static Result index() 
 	{
-		return redirect(routes.VentilateurControleur.listerVentilateurs());
+		return redirect(routes.StationControleur.listerStations());
 	}
 }

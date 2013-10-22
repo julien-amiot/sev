@@ -52,11 +52,17 @@ extends GlobalSettings
             	Ebean.save(all.get("etatsVentilateur"));
             }
             
-            /*if (Ebean.find(Station.class).findRowCount() == 0) 
+            if (Ebean.find(Station.class).findRowCount() == 0) 
             {
             	List<Object> listeDesStations = all.get("stations");
             	Ebean.save(listeDesStations);
-            }*/
+            	
+            	for (Object station : listeDesStations)
+            	{
+            		Ebean.saveManyToManyAssociations(station, "stationsPrecedentes");
+            		Ebean.saveManyToManyAssociations(station, "sections");
+            	}
+            }
         }
     }
 }

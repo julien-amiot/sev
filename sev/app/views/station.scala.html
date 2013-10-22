@@ -13,6 +13,21 @@
 		{
 			display: none;
 		}
+		
+		.colonne_Reseau
+		{
+			display: none;
+		}
+		
+		.colonne_Ligne
+		{
+			display: none;
+		}
+		
+		.colonne_Composite_Reseau-Ligne
+		{
+			white-space: nowrap;
+		}
 	</style>
 	<script>
 	jQuery(document)
@@ -41,17 +56,31 @@
 					alimenteDonneesSelectAJAX('@routes.StationControleur.listerStationsSelonLigneJSON()', $(event.target).val(), 'stationsPrecedentes_id__');
 				}
 			);
-			$(".colonne_EnSurface:contains('true')").parent().addClass('stationAerienne');
+			$("tbody td.colonne_EnSurface:contains('true')").parent().addClass('stationAerienne');
+			 
+			$("tbody td.colonne_Composite_Reseau-Ligne")
+				.each
+				(
+					function ()
+					{
+						var celluleCompositeReseauLigne = $(this);
+						var reseau = celluleCompositeReseauLigne.prevAll('.colonne_Reseau').html().trim();
+						var ligne = celluleCompositeReseauLigne.prevAll('.colonne_Ligne').html().trim();
+						$('<img>').attr('src', '/assets/images/' + reseau + '.gif').appendTo(celluleCompositeReseauLigne);
+						$('<img>').attr('src', '/assets/images/' + ligne + '.gif').appendTo(celluleCompositeReseauLigne);
+					}
+				);
 		}
 	);
 	</script>
     <h1>@stations.size() @Messages.get("views.station.h.stations")</h1>
-    <table id="tableStations" class="table table-condensed table-hover">
+    <table id="tableStations" class="table table-condensed">
 	    <thead>
 	        <tr>
 	            <th>@Messages.get("views.table.th.station")</th>
-	        	<th>@Messages.get("views.table.th.reseau")</th>
-	        	<th>@Messages.get("views.table.th.ligne")</th>
+	        	<th class='colonne_Reseau'>@Messages.get("views.table.th.reseau")</th>
+	        	<th class='colonne_Ligne'>@Messages.get("views.table.th.ligne")</th>
+	        	<th class='colonne_Composite_Reseau-Ligne'>@Messages.get("views.table.th.ligne")</th>
 	        	<th>@Messages.get("views.table.th.sections")</th>
 	        	<th>@Messages.get("views.table.th.stationsPrecedentes")</th>
 	        	<th>@Messages.get("views.table.th.stationsSuivantes")</th>
@@ -65,11 +94,13 @@
 	            	<td>
 	            		@station.libelle
 	            	</td>
-	            	<td>
+	            	<td class='colonne_Reseau'>
 	            		@station.getReseau
 	            	</td>
-	            	<td>
+	            	<td class='colonne_Ligne'>
 	            		@station.getLigne	            	
+	            	</td>
+	            	<td class='colonne_Composite_Reseau-Ligne'>
 	            	</td>
 	            	<td>
 	            		@for(section <- station.getListeSections) {
@@ -77,24 +108,32 @@
 	            		}
 	            	</td>
 	            	<td>
-	            		@for(stationPrecedente <- station.getStationsPrecedentes) {
-	            			<span>@stationPrecedente</span>
-	            		}
+	            		<ul>
+		            		@for(stationPrecedente <- station.getStationsPrecedentes) {
+		            			<li>@stationPrecedente</li>
+		            		}
+	            		</ul>
 	            	</td>
 	            	<td>
-	            		@for(stationSuivante <- station.getStationsSuivantes) {
-	            			<span>@stationSuivante</span>
-	            		}
+	            		<ul>
+		            		@for(stationSuivante <- station.getStationsSuivantes) {
+		            			<li>@stationSuivante</li>
+		            		}
+	            		</ul>
 	            	</td>
 	            	<td class="colonne_EnSurface">
 	            		@station.isEnSurface
 	            	</td>	 
 	            	<td>
-		                @form(routes.StationControleur.supprimerStation(station.id)) {
-		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' class="btn btn-default btn-xs">
-		                }
-		                <input type="submit" value='@Messages.get("views.bouton.detail")' class="btn btn-default btn-xs">
-		                <input type="submit" value='@Messages.get("views.bouton.modifier")' class="btn btn-default btn-xs">
+		                <form method='' action=''>
+		                    <div class="btn-toolbar">
+							    <div class="btn-group btn-small">
+								    <a class='btn btn-small' href="#"><i title='@Messages.get("views.bouton.detail")' class="icon-eye-open"></i></a>
+								    <a class='btn btn-small' href="#"><i title='@Messages.get("views.bouton.modifier")' class="icon-edit"></i></a>
+							    	<a class='btn btn-small' onclick="$(this).envoyerFormulaire('POST', '@routes.StationControleur.supprimerStation(station.id)')"><i title='@Messages.get("views.bouton.supprimer")' class='icon-trash'></i></a>
+	   							</div>
+	   						</div>
+   						</form>
 		            </td>	            	
 	            </tr>
 	        }

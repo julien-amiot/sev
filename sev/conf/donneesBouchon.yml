@@ -3,320 +3,274 @@
 
 reseaux:
 
-    - !!models.Reseau
+    - &reseauMetro !!models.Reseau
         libelle: Métro
 
-    - !!models.Reseau
+    - &reseauRER !!models.Reseau
         libelle: RER
 
 # Lignes
 
 lignes:
 
-    - !!models.Ligne
+    - &ligne1 !!models.Ligne
         libelle: 1
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne2 !!models.Ligne
         libelle: 2
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne3 !!models.Ligne
         libelle: 3
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne3bis !!models.Ligne
         libelle: 3bis
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne4 !!models.Ligne
         libelle: 4
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne5 !!models.Ligne
         libelle: 5
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne6 !!models.Ligne
         libelle: 6
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade                                                
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne7 !!models.Ligne
         libelle: 7
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne7bis !!models.Ligne
         libelle: 7bis
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne8 !!models.Ligne
         libelle: 8
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade        
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne9 !!models.Ligne
         libelle: 9
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne10 !!models.Ligne
         libelle: 10
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne11 !!models.Ligne
         libelle: 11
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne12 !!models.Ligne
         libelle: 12
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne13 !!models.Ligne
         libelle: 13
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
         
-    - !!models.Ligne
+    - &ligne14 !!models.Ligne
         libelle: 14
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade                                                                
-        reseau: !!models.Reseau
-                    libelle: Métro
+        reseau: *reseauMetro
 
-    - !!models.Ligne
+    - &ligneA !!models.Ligne
         libelle: A
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade          
-        reseau: !!models.Reseau
-                    libelle: RER
+        reseau: *reseauRER
 
-    - !!models.Ligne
+    - &ligneB !!models.Ligne
         libelle: B
         guideOperateurLigneURI: test_GOL
         guideOperateurLigneDegradeURI: test_GOL_Degrade
-        reseau: !!models.Reseau
-                    libelle: RER
+        reseau: *reseauRER
 
 # Sections
 
 sections:
 
-    - !!models.Section
+    - &sectionA1 !!models.Section 
         libelle: A1
-        ligne: !!models.Ligne
-                    libelle: A
+        ligne: *ligneA
 
-    - !!models.Section
+    - &sectionA2 !!models.Section
         libelle: A2
-        ligne: !!models.Ligne
-                    libelle: A
+        ligne: *ligneA
 
-    - !!models.Section
+    - &sectionA3 !!models.Section
         libelle: A3
-        ligne: !!models.Ligne
-                    libelle: A
+        ligne: *ligneA
 
-    - !!models.Section
+    - &sectionA4 !!models.Section
         libelle: A4
-        ligne: !!models.Ligne
-                    libelle: A
+        ligne: *ligneA
                     
-    - !!models.Section
+    - &sectionA5 !!models.Section
         libelle: A5
-        ligne: !!models.Ligne
-                    libelle: A
+        ligne: *ligneA
            
-    - !!models.Section
+    - &sectionB2 !!models.Section
         libelle: B2
-        ligne: !!models.Ligne
-                    libelle: B
+        ligne: *ligneB
     
-    - !!models.Section
+    - &sectionB3 !!models.Section
         libelle: B3
-        ligne: !!models.Ligne
-                    libelle: B
+        ligne: *ligneB
     
-    - !!models.Section
+    - &sectionB4 !!models.Section
         libelle: B4
-        ligne: !!models.Ligne
-                    libelle: B
+        ligne: *ligneB
     
-    - !!models.Section
+    - &sectionB5 !!models.Section
         libelle: B5
-        ligne: !!models.Ligne
-                    libelle: B
+        ligne: *ligneB
     
-    - !!models.Section
+    - &section1 !!models.Section
         libelle: 1
-        ligne: !!models.Ligne
-                    libelle: 1
+        ligne: *ligne1
     
-    - !!models.Section
+    - &section2 !!models.Section
         libelle: 2
-        ligne: !!models.Ligne
-                    libelle: 2
+        ligne: *ligne2
     
-    - !!models.Section
+    - &section3 !!models.Section
         libelle: 3
-        ligne: !!models.Ligne
-                    libelle: 3
+        ligne: *ligne3
     
-    - !!models.Section
+    - &section3bis !!models.Section
         libelle: 3bis
-        ligne: !!models.Ligne
-                    libelle: 3bis
+        ligne: *ligne3bis
     
-    - !!models.Section
+    - &section4 !!models.Section
         libelle: 4
-        ligne: !!models.Ligne
-                    libelle: 4
+        ligne: *ligne4
     
-    - !!models.Section
+    - &section5 !!models.Section
         libelle: 5
-        ligne: !!models.Ligne
-                    libelle: 5
+        ligne: *ligne5
      
-    - !!models.Section
+    - &section6 !!models.Section
         libelle: 6
-        ligne: !!models.Ligne
-                    libelle: 6
+        ligne: *ligne6
 
-    - !!models.Section
+    - &section7bis !!models.Section
         libelle: 7bis
-        ligne: !!models.Ligne
-                    libelle: 7bis                    
+        ligne: *ligne7bis                    
      
-    - !!models.Section
+    - &section7MI !!models.Section
         libelle: 7MI
-        ligne: !!models.Ligne
-                    libelle: 7
+        ligne: *ligne7
     
-    - !!models.Section
+    - &section7VLA !!models.Section
         libelle: 7VLA
-        ligne: !!models.Ligne
-                    libelle: 7
+        ligne: *ligne7
                                 
-    - !!models.Section
+    - &section8 !!models.Section
         libelle: 8
-        ligne: !!models.Ligne
-                    libelle: 8
+        ligne: *ligne8
     
-    - !!models.Section
+    - &section9 !!models.Section
         libelle: 9
-        ligne: !!models.Ligne
-                    libelle: 9
+        ligne: *ligne9
     
-    - !!models.Section
+    - &section10S !!models.Section
         libelle: 10S
-        ligne: !!models.Ligne
-                    libelle: 10
+        ligne: *ligne10
     
-    - !!models.Section
+    - &section10N !!models.Section
         libelle: 10N
-        ligne: !!models.Ligne
-                    libelle: 10
+        ligne: *ligne10
     
-    - !!models.Section
+    - &section11 !!models.Section
         libelle: 11
-        ligne: !!models.Ligne
-                    libelle: 11
+        ligne: *ligne11
                     
-    - !!models.Section
+    - &section12 !!models.Section
         libelle: 12
-        ligne: !!models.Ligne
-                    libelle: 12
+        ligne: *ligne12
     
-    - !!models.Section
+    - &section13AGLC !!models.Section
         libelle: 13AGLC
-        ligne: !!models.Ligne
-                    libelle: 13
+        ligne: *ligne13
     
-    - !!models.Section
+    - &section13SDU !!models.Section
         libelle: 13SDU
-        ligne: !!models.Ligne
-                    libelle: 13
+        ligne: *ligne13
     
-    - !!models.Section
+    - &section14 !!models.Section
         libelle: 14
-        ligne: !!models.Ligne
-                    libelle: 14
+        ligne: *ligne14
                     
 # EtatsCCVM
 
 etatsCCVM:
 
-    - !!models.EtatCCVM
+    - &etatsCCVMArrete !!models.EtatCCVM
         libelle: Arrêté
 
-    - !!models.EtatCCVM
+    - &etatsCCVMEx20 !!models.EtatCCVM
         libelle: Extraction 20%
 
-    - !!models.EtatCCVM
+    - &etatsCCVMEx50 !!models.EtatCCVM
         libelle: Extraction 50%
 
-    - !!models.EtatCCVM
+    - &etatsCCVMEx100 !!models.EtatCCVM
         libelle: Extraction 100%
 
-    - !!models.EtatCCVM
+    - &etatsCCVMIn20 !!models.EtatCCVM
         libelle: Injection 20%
 
-    - !!models.EtatCCVM
+    - &etatsCCVMIn50 !!models.EtatCCVM
         libelle: Injection 50%
 
-    - !!models.EtatCCVM
+    - &etatsCCVMIn100 !!models.EtatCCVM
         libelle: Injection 100%
 
 # EtatsVentilateur
 
 etatsVentilateur:
 
-    - !!models.EtatVentilateur
+    - &etatVentilateurKO !!models.EtatVentilateur
         libelle: Hors exploitation
         couleurHexadecimale: "#FF0000"
 
-    - !!models.EtatVentilateur
+    - &etatVentilateurOK !!models.EtatVentilateur
         libelle: Opérationnel
         couleurHexadecimale: "#00FF00"
         
@@ -324,70 +278,69 @@ etatsVentilateur:
 
 stations:
 
-    - !!models.Station
+    - &station1 !!models.Station
         id: 1
         libelle: Nanterre Université
         sections: 
-          - !!models.Section
-                  libelle: A1
+          - *sectionA1
         isEnSurface: true
 
-    - !!models.Station
+    - &station2 !!models.Station
         id: 2    
         libelle: Houilles Carrières-sur-Seine
-        
         sections: 
-            - !!models.Section
-                libelle: A3
-            - !!models.Section
-                libelle: A5     
-                                 
+            - *sectionA3
+            - *sectionA5     
         isEnSurface: true
 
-    - !!models.Station
+    - &station3 !!models.Station
         id: 3    
         libelle: Nanterre Préfecture
-        
         sections: 
-        
-            - !!models.Section
-                libelle: A1
-            - !!models.Section
-                libelle: A3                    
-            - !!models.Section
-                libelle: A5                    
-            - !!models.Section
-                libelle: A4                    
-            - !!models.Section
-                libelle: A2
-                
+            - *sectionA1
+            - *sectionA3                    
+            - *sectionA5                    
+            - *sectionA4                    
+            - *sectionA2
         stationsPrecedentes: 
-        
-            - !!models.Station
-                id: 1
-            - !!models.Station
-                id: 2              
-                                            
+            - *station1
+            - *station2              
         isEnSurface: false
 
-    - !!models.Station
+    - &station4 !!models.Station
         id: 4
         libelle: La Défense
-        
         sections: 
-            - !!models.Section
-                libelle: A1
-            - !!models.Section
-                libelle: A3                    
-            - !!models.Section
-                libelle: A5                    
-            - !!models.Section
-                libelle: A4                    
-            - !!models.Section
-                libelle: A2
-                
+            - *sectionA1
+            - *sectionA3                    
+            - *sectionA5                    
+            - *sectionA4                    
+            - *sectionA2
         stationsPrecedentes: 
-            - !!models.Station
-                id: 3
-                
+            - *station3
         isEnSurface: false  
+        
+    - &station5 !!models.Station
+        id: 5
+        libelle: La Défense - Grande Arche
+        sections: 
+            - *section1
+        isEnSurface: false
+                  
+    - &station6 !!models.Station
+        id: 6
+        libelle: Esplanade de La Défense
+        sections: 
+            - *section1
+        stationsPrecedentes: 
+            - *station5            
+        isEnSurface: false                            
+        
+    - &station7 !!models.Station
+        id: 7
+        libelle: Pont de Neuilly
+        sections: 
+            - *section1
+        stationsPrecedentes: 
+            - *station6            
+        isEnSurface: false        

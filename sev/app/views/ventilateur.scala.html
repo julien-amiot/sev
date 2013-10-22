@@ -7,7 +7,8 @@
 	    <thead>
 	        <tr>
 	            <th>Ventilateur</th>
-				<th>Ligne</th>	            
+	            <th class='reseau'>Reseau</th>
+				<th class='ligne'>Ligne</th>	            
 	            <th>Station</th>
 	            <th>Etat de fonctionnement</th>
 	            <th>D&eacute;but</th>
@@ -15,7 +16,7 @@
 	            <th>Etat CCVM</th>
 	            <th>Attention</th>
 	            <th>Observations</th>
-	            <th>Actions</th>
+	            <th class='actions'>Actions</th>
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -25,6 +26,7 @@
 	            		@ventilateur.libelle
 	            	</td>
 	            	<td></td>	            	
+	            	<td></td>	            	
 	            	<td></td>
 	            	<td></td>
 	            	<td></td>
@@ -32,12 +34,16 @@
 	            	<td></td>
 	            	<td></td>
 	            	<td></td>
-	                <td style="white-space: nowrap">
-		                @form(routes.VentilateurControleur.supprimerVentilateur(ventilateur.libelle)) {
-		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' @*class="btn"*@>
-		                }
-		                <input type="submit" value='@Messages.get("views.bouton.detail")' @*class="btn"*@>
-		                <input type="submit" value='@Messages.get("views.bouton.modifier")' @*class="btn"*@>
+	                <td class='actions'>
+		                <form method='' action=''>
+		                    <div class="btn-toolbar">
+							    <div class="btn-group btn-small">
+								    <a class='btn btn-small' href="#"><i title='@Messages.get("views.bouton.detail")' class="icon-eye-open"></i></a>
+								    <a class='btn btn-small' href="#"><i title='@Messages.get("views.bouton.modifier")' class="icon-edit"></i></a>
+							    	<a class='btn btn-small' onclick="$(this).envoyerFormulaire('POST', '')"><i title='@Messages.get("views.bouton.supprimer")' class='icon-trash'></i></a>
+	   							</div>
+	   						</div>
+   						</form>
 		            </td>
 	            </tr>
 	        }

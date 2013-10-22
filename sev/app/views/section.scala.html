@@ -22,13 +22,17 @@
 	            		@section.getLigne.getReseau @section.getLigne
 	            	</td>
 	            	<td></td>
-	                <td style="white-space: nowrap">
-		                @form(routes.SectionControleur.supprimerSection(section.libelle)) {
-		                    <input type="submit" value='@Messages.get("views.bouton.supprimer")' @*class="btn"*@>
-		                }
-		                <input type="submit" value='@Messages.get("views.bouton.detail")' @*class="btn"*@>
-		                <input type="submit" value='@Messages.get("views.bouton.modifier")' @*class="btn"*@>
-		            </td>	            	
+	                <td>
+		                <form method='' action=''>
+		                    <div class="btn-toolbar">
+							    <div class="btn-group btn-small">
+								    <a class='btn btn-small' href="#"><i title='@Messages.get("views.bouton.detail")' class="icon-eye-open"></i></a>
+								    <a class='btn btn-small' href="#"><i title='@Messages.get("views.bouton.modifier")' class="icon-edit"></i></a>
+							    	<a class='btn btn-small' onclick="$(this).envoyerFormulaire('POST', '')"><i title='@Messages.get("views.bouton.supprimer")' class='icon-trash'></i></a>
+	   							</div>
+	   						</div>
+   						</form>
+		            </td>            	
 	            </tr>
 	        }
 	    </tbody>
