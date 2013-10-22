@@ -17,11 +17,15 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/jquery.dataTables.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/demo_table.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/TableTools.css")">
         <link rel="shortcut icon" type="image/ico" href="@routes.Assets.at("images/favicon.ico")">
         <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/bootstrap.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/jquery.dataTables.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/paging.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/ZeroClipboard.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/TableTools.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/FixedHeader.min.js")" type="text/javascript"></script>        
 		<script>
 			(
 				function ($)
@@ -106,11 +110,6 @@
 				);
 			}
 
-			function envoyerFormulaire(typeEnvoi, action)
-			{
-				
-			}
-				
 			$.extend
 			(
 				$.fn.dataTableExt.oStdClasses, 
@@ -134,17 +133,104 @@
 			(
 				function() 
 				{
-			    	$("[id^='table']")
+					$("tbody td.colonne_EnSurface:contains('true')").parent().addClass('stationAerienne');
+					$("tbody td.colonne_Composite_Reseau-Ligne")
+						.each
+						(
+							function ()
+							{
+								var celluleCompositeReseauLigne = $(this);
+								var reseau = celluleCompositeReseauLigne.prevAll('.colonne_Reseau').html().trim();
+								var ligne = celluleCompositeReseauLigne.prevAll('.colonne_Ligne').html().trim();
+								$('<img>')
+									.attr('src', '/assets/images/' + reseau + '.gif')
+									.attr('title', reseau)
+									.addClass('img-circle')
+									.appendTo(celluleCompositeReseauLigne);
+								$('<img>')
+									.attr('src', '/assets/images/' + ligne + '.gif')
+									.attr('title', ligne)
+									.addClass('img-circle')
+									.appendTo(celluleCompositeReseauLigne);
+							}
+						);
+			    	var table = $("[id^='table']")
 			    	.dataTable
 			    	(
 			   			{
-							"sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
-			   				"sPaginationType": "bootstrap"
+			   				"sDom": "<'row-fluid'<'span6'T><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+			   				"sPaginationType": "bootstrap",
+			   				"oLanguage": 
+		   					{
+		   					    "sProcessing":     "Traitement en cours...",
+		   					    "sSearch":         "Rechercher&nbsp;:",
+		   					    "sLengthMenu":     "Afficher _MENU_ &eacute;l&eacute;ments",
+		   					    "sInfo":           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+		   					    "sInfoEmpty":      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+		   					    "sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+		   					    "sInfoPostFix":    "",
+		   					    "sLoadingRecords": "Chargement en cours...",
+		   					    "sZeroRecords":    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+		   					    "sEmptyTable":     "Aucune donn&eacute;e disponible dans le tableau",
+		   					    "oPaginate": 
+			   					{
+		   					        "sFirst":      "Premier",
+		   					        "sPrevious":   "Pr&eacute;c&eacute;dent",
+		   					        "sNext":       "Suivant",
+		   					        "sLast":       "Dernier"
+		   					    },
+		   					    "oAria": 
+			   					{
+		   					        "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+		   					        "sSortDescending": ": activer pour trier la colonne par ordre décroissant"
+		   					    },
+			   					 "oTableTools":
+				   				{
+			   						"aButtons": [
+			   							"copy",
+			   							"print",
+			   							{
+			   								"sExtends":    "collection",
+			   								"sButtonText": 'Save <span class="caret" />',
+			   								"aButtons":    [ "csv", "xls", "pdf" ]
+			   							}
+			   						]
+			   					}
+		   					}
 			   			}
 			    	);
+			    	new FixedHeader(table);
 				}
 			);
-		</script>        
+		</script>
+		<style>
+			table.dataTable>tbody>tr.odd>td.sorting_1{ background-color: lightgrey; border:2px lightgrey; }
+			table.dataTable>tbody>tr.even>td.sorting_1{ background-color: lightgrey; border:2px lightgrey; }
+		    table.dataTable>tbody>tr.odd { background-color: white;  border:2px lightgrey; }
+		    table.dataTable>tbody>tr.even{ background-color: white; border:2px lightgrey; }
+			table#tableStations>tbody>tr.stationAerienne{ background-color: #EECCAA;}		    
+			table#tableStations>tbody>tr.stationAerienne.odd>td.sorting_1{ background-color: #DDBB99;}
+			table#tableStations>tbody>tr.stationAerienne.even>td.sorting_1{ background-color: #DDBB99;}
+			.colonne_EnSurface
+			{
+				display: none;
+			}
+			
+			.colonne_Reseau
+			{
+				display: none;
+			}
+			
+			.colonne_Ligne
+			{
+				display: none;
+			}
+			
+			.colonne_Composite_Reseau-Ligne
+			{
+				white-space: nowrap;
+			}
+		</style>     
     </head>
     <body>
     	<ul class="nav nav-pills">

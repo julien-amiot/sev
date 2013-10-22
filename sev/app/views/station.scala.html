@@ -3,32 +3,6 @@
 @import helper.twitterBootstrap._
 @import play.i18n._
 @main(Messages.get("views.station.titre")) {
-	<style type="text/css">
-		table#tableStations>tbody>tr.stationAerienne
-		{
-			background-color: #FFEEAA;
-		}
-		
-		.colonne_EnSurface
-		{
-			display: none;
-		}
-		
-		.colonne_Reseau
-		{
-			display: none;
-		}
-		
-		.colonne_Ligne
-		{
-			display: none;
-		}
-		
-		.colonne_Composite_Reseau-Ligne
-		{
-			white-space: nowrap;
-		}
-	</style>
 	<script>
 	jQuery(document)
 	.ready
@@ -56,20 +30,6 @@
 					alimenteDonneesSelectAJAX('@routes.StationControleur.listerStationsSelonLigneJSON()', $(event.target).val(), 'stationsPrecedentes_id__');
 				}
 			);
-			$("tbody td.colonne_EnSurface:contains('true')").parent().addClass('stationAerienne');
-			 
-			$("tbody td.colonne_Composite_Reseau-Ligne")
-				.each
-				(
-					function ()
-					{
-						var celluleCompositeReseauLigne = $(this);
-						var reseau = celluleCompositeReseauLigne.prevAll('.colonne_Reseau').html().trim();
-						var ligne = celluleCompositeReseauLigne.prevAll('.colonne_Ligne').html().trim();
-						$('<img>').attr('src', '/assets/images/' + reseau + '.gif').appendTo(celluleCompositeReseauLigne);
-						$('<img>').attr('src', '/assets/images/' + ligne + '.gif').appendTo(celluleCompositeReseauLigne);
-					}
-				);
 		}
 	);
 	</script>

@@ -5,10 +5,7 @@
 # Map Bootstrap images
 GET     /assets/img/glyphicons-halflings.png            controllers.Assets.at(path="/public", file="/images/glyphicons-halflings.png")
 GET     /assets/img/glyphicons-halflings-white.png      controllers.Assets.at(path="/public", file="/images/glyphicons-halflings-white.png")
-#GET		/images/:file									controllers.Assets.at(path="/assets/images", file)
-#GET		/javascripts/:file								controllers.Assets.at(path="/assets/javascripts", file)
-#GET		/stylesheets/:file								controllers.Assets.at(path="/assets/stylesheets", file)
-
+GET		/media/swf/copy_csv_xls_pdf.swf					controllers.Assets.at(path="/public", file="/swf/copy_csv_xls_pdf.swf")
 
 # Home page
 GET     /                           	controllers.Application.index()
