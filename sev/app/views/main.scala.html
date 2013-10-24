@@ -126,6 +126,31 @@
 				    "sSortable": "header"
 				}
 			);
+
+			// Set the classes that TableTools uses to something suitable for Bootstrap
+			$.extend( true, $.fn.DataTable.TableTools.classes, {
+				"container": "btn-group",
+				"buttons": {
+					"normal": "btn",
+					"disabled": "btn disabled"
+				},
+				"collection": {
+					"container": "DTTT_dropdown dropdown-menu",
+					"buttons": {
+						"normal": "",
+						"disabled": "disabled"
+					}
+				}
+			} );
+
+			// Have the collection use a bootstrap compatible dropdown
+			$.extend( true, $.fn.DataTable.TableTools.DEFAULTS.oTags, {
+				"collection": {
+					"container": "ul",
+					"button": "li",
+					"liner": "a"
+				}
+			} );			
 	
 			$(document)
 			.ready
@@ -157,7 +182,7 @@
 			    	.dataTable
 			    	(
 			   			{
-			   				"sDom": "<'row-fluid'<'span6'T><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+			   				"sDom": "<'row-fluid'<'span3'T><'span3 offset2'l><'span4'f>r><'row-fluid'<'span12't>><'row-fluid'<'span4 offset8'p>>",
 			   				"sPaginationType": "bootstrap",
 			   				"oLanguage": 
 		   					{
@@ -181,20 +206,26 @@
 		   					    "oAria": 
 			   					{
 		   					        "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
-		   					        "sSortDescending": ": activer pour trier la colonne par ordre d�croissant"
-		   					    },
-			   					 "oTableTools":
-				   				{
-			   						"aButtons": [
-			   							"copy",
-			   							"print",
-			   							{
-			   								"sExtends":    "collection",
-			   								"sButtonText": 'Save <span class="caret" />',
-			   								"aButtons":    [ "csv", "xls", "pdf" ]
-			   							}
-			   						]
-			   					}
+		   					        "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
+		   					    }
+		   					},
+							"oTableTools":
+							{
+		   						"aButtons": [
+									{
+										"sExtends":    "copy",
+										"sButtonText": "Copier",
+									},
+									{
+										"sExtends":    "print",
+										"sButtonText": "Imprimer",
+									},
+		   							{
+		   								"sExtends":    "collection",
+		   								"sButtonText": "Exporter",
+		   								"aButtons":    [ "csv", "xls", "pdf" ]
+		   							}
+		   						]
 		   					}
 			   			}
 			    	);

@@ -35,6 +35,7 @@ table#tableStations>tbody>tr.stationAerienne{ border-top: solid 32px #EECCAA;}
 table#tableStations>tbody>tr.stationAerienne.odd>td.sorting_1{ border-top: solid 32px #DDBB99;}
 table#tableStations>tbody>tr.stationAerienne.even>td.sorting_1{ border-top: solid 32px #DDBB99;}
 .dataTable>tbody>tr>td>form, .dataTable>tbody>tr>td>form>.btn-toolbar { margin: 0; } 
+.span4>div.dataTables_paginate { margin: 10px 0 0 0; }
 
 .colonne_EnSurface
 {
