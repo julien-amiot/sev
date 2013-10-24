@@ -20,6 +20,7 @@ views.table.th.stationsPrecedentes=Stations précédentes
 views.table.th.stationsSuivantes=Stations suivantes
 views.table.th.isEnSurface=Station en surface
 views.table.th.couleurHexadecimale=Couleur
+views.menu.item.tableauDeBord=Tableau de bord
 views.menu.item.ventilateurs=Ventilateurs
 views.menu.item.stations=Stations
 views.menu.item.sections=Sections
@@ -34,7 +35,6 @@ views.select.section.defaut=Veuillez sélectionner une section
 views.select.station.defaut=Veuillez sélectionner une station
 views.select.sections.defaut=Veuillez sélectionner une ou plusieurs sections
 views.select.stations.defaut=Veuillez sélectionner une ou plusieurs stations
-
 
 ## VENTILATEURS
 views.ventilateur.titre=Liste des ventilateurs
@@ -95,6 +95,9 @@ views.etatCCVM.titre=Liste des états de CCVM
 views.etatCCVM.h.etatsCCVM=état(s) de CCVM
 views.etatCCVM.h.ajouter=Ajouter un état de CCVM
 views.etatCCVM.form.label.libelle=Libellé
+
+## TABLEAU DE BORD
+views.tableauDeBord.titre=Tableau de bord
 
 # SERVEUR
 

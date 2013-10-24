@@ -10,6 +10,9 @@ GET		/media/swf/copy_csv_xls_pdf.swf					controllers.Assets.at(path="/public", f
 # Home page
 GET     /                           	controllers.Application.index()
 
+# Tableau de bord
+GET     /tableauDeBord					controllers.TableauDeBordControleur.index()
+
 # Ventilateurs
 GET     /ventilateurs					controllers.VentilateurControleur.listerVentilateurs()
 POST    /ventilateurs					controllers.VentilateurControleur.ajouterVentilateur()

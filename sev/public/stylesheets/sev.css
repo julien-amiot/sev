@@ -26,3 +26,41 @@ table {
     margin: 1em 0;
     clear: both;
 }
+
+table.dataTable>tbody>tr.odd>td.sorting_1{ background-color: lightgrey; border:2px lightgrey; }
+table.dataTable>tbody>tr.even>td.sorting_1{ background-color: lightgrey; border:2px lightgrey; }
+table.dataTable>tbody>tr.odd { background-color: white;  border:2px lightgrey; }
+table.dataTable>tbody>tr.even{ background-color: white; border:2px lightgrey; }
+table#tableStations>tbody>tr.stationAerienne{ border-top: solid 32px #EECCAA;}		    
+table#tableStations>tbody>tr.stationAerienne.odd>td.sorting_1{ border-top: solid 32px #DDBB99;}
+table#tableStations>tbody>tr.stationAerienne.even>td.sorting_1{ border-top: solid 32px #DDBB99;}
+.dataTable>tbody>tr>td>form, .dataTable>tbody>tr>td>form>.btn-toolbar { margin: 0; } 
+
+.colonne_EnSurface
+{
+	display: none;
+}
+
+.colonne_Reseau
+{
+	display: none;
+}
+
+.colonne_Ligne
+{
+	display: none;
+}
+
+.table>tbody>tr>td.colonne_Composite_Reseau-Ligne, .table>thead>tr>th.colonne_Composite_Reseau-Ligne
+{
+	white-space: nowrap;
+	width: 80px;
+	text-align: center;
+}
+
+.table>tbody>tr>td.colonne_Actions, .table>thead>tr>th.colonne_Actions
+{
+	white-space: nowrap;
+	width: 120px;
+	text-align: center;
+}

@@ -13,6 +13,6 @@ extends
 	
 	public static Result index() 
 	{
-		return redirect(routes.StationControleur.listerStations());
+		return redirect(routes.TableauDeBordControleur.index());
 	}
 }
