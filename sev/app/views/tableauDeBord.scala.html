@@ -1,0 +1,184 @@
+@(stations: List[Station])
+@import helper._
+@import helper.twitterBootstrap._
+@import play.i18n._
+@main(Messages.get("views.tableauDeBord.titre")) {
+	<script>
+	jQuery(document)
+	.ready
+	(
+		function ($)
+		{
+			$('#ligne, #sections_libelle__, #stationsPrecedentes_id__').hide();
+			$('#reseau')
+			.on
+			(
+				'change',
+				function (event)
+				{
+				 	$('#sections_libelle__, #stationsPrecedentes_id__').hide();
+					alimenteDonneesSelectAJAX('@routes.LigneControleur.listerLignesJSON()', $(event.target).val(), 'ligne');
+				}
+			);
+			$('#ligne')
+			.on
+			(
+				'change',
+				function (event)
+				{
+					alimenteDonneesSelectAJAX('@routes.SectionControleur.listerSectionsJSON()', $(event.target).val(), 'sections_libelle__');
+					alimenteDonneesSelectAJAX('@routes.StationControleur.listerStationsSelonLigneJSON()', $(event.target).val(), 'stationsPrecedentes_id__');
+				}
+			);
+		}
+	);
+	</script>
+	<div class="accordion" id="accordion2">
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+					<h1>21 indisponibilit&eacute;(s)</h1>
+				</a>
+			</div>
+			<div id="collapseOne" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<div class="accordion" id="accordion2_1">
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2_1" href="#collapseOne_1">
+									<h2>M&eacute;tro : 18 indisponibilit&eacute;(s)</h2>
+								</a>
+							</div>
+							<div id="collapseOne_1" class="accordion-body collapse">
+								<div class="accordion-inner">
+									<div class="accordion" id="accordion2_1_1">
+										<div class="accordion-group">
+											<div class="accordion-heading">
+												<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2_1_1" href="#collapseOne_1_1">
+													<h3>15 hors exploitation</h3>
+												</a>
+											</div>
+											<div id="collapseOne_1_1" class="accordion-body collapse">
+												<div class="accordion-inner">
+													<table id="tableStations" class="table table-condensed">
+													    <thead>
+													        <tr>
+													            <th>@Messages.get("views.table.th.station")</th>
+													        	<th class='colonne_Reseau'>@Messages.get("views.table.th.reseau")</th>
+													        	<th class='colonne_Ligne'>@Messages.get("views.table.th.ligne")</th>
+													        	<th class='colonne_Composite_Reseau-Ligne'>@Messages.get("views.table.th.ligne")</th>
+													        	<th>@Messages.get("views.table.th.sections")</th>
+													            <th class='colonne_EnSurface'>@Messages.get("views.table.th.isEnSurface")</th>
+													            <th class='colonne_Actions'>@Messages.get("views.table.th.actions")</th>
+													        </tr>
+													    </thead>
+													    <tbody>
+													        @for(station <- stations) {
+													            <tr>
+													            	<td>
+													            		@station.libelle
+													            	</td>
+													            	<td class='colonne_Reseau'>
+													            		@station.getReseau
+													            	</td>
+													            	<td class='colonne_Ligne'>
+													            		@station.getLigne	            	
+													            	</td>
+													            	<td class='colonne_Composite_Reseau-Ligne'>
+													            	</td>
+													            	<td>
+													            		@for(section <- station.getListeSections) {
+													            			<span>@section</span> 
+													            		}
+													            	</td>
+													            	<td class="colonne_EnSurface">
+													            		@station.isEnSurface
+													            	</td>	 
+													            	<td class='colonne_Actions'>
+														                <form method='' action=''>
+														                    <div class="btn-toolbar">
+																			    <div class="btn-group btn-small">
+																				    <a class='btn btn-small' href="#"><i title='@Messages.get("views.bouton.detail")' class="icon-eye-open"></i></a>
+																				    <a class='btn btn-small' href="#"><i title='@Messages.get("views.bouton.modifier")' class="icon-edit"></i></a>
+																			    	<a class='btn btn-small' onclick="$(this).envoyerFormulaire('POST', '@routes.StationControleur.supprimerStation(station.id)')"><i title='@Messages.get("views.bouton.supprimer")' class='icon-trash'></i></a>
+													   							</div>
+													   						</div>
+												   						</form>
+														            </td>	            	
+													            </tr>
+													        }
+													    </tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+					<h1>22 CMA</h1>
+				</a>
+			</div>
+			<div id="collapseTwo" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<table id="tableStations" class="table table-condensed">
+					    <thead>
+					        <tr>
+					            <th>@Messages.get("views.table.th.station")</th>
+					        	<th class='colonne_Reseau'>@Messages.get("views.table.th.reseau")</th>
+					        	<th class='colonne_Ligne'>@Messages.get("views.table.th.ligne")</th>
+					        	<th class='colonne_Composite_Reseau-Ligne'>@Messages.get("views.table.th.ligne")</th>
+					        	<th>@Messages.get("views.table.th.sections")</th>
+					            <th class='colonne_EnSurface'>@Messages.get("views.table.th.isEnSurface")</th>
+					            <th class='colonne_Actions'>@Messages.get("views.table.th.actions")</th>
+					        </tr>
+					    </thead>
+					    <tbody>
+					        @for(station <- stations) {
+					            <tr>
+					            	<td>
+					            		@station.libelle
+					            	</td>
+					            	<td class='colonne_Reseau'>
+					            		@station.getReseau
+					            	</td>
+					            	<td class='colonne_Ligne'>
+					            		@station.getLigne	            	
+					            	</td>
+					            	<td class='colonne_Composite_Reseau-Ligne'>
+					            	</td>
+					            	<td>
+					            		@for(section <- station.getListeSections) {
+					            			<span>@section</span> 
+					            		}
+					            	</td>
+					            	<td class="colonne_EnSurface">
+					            		@station.isEnSurface
+					            	</td>	 
+					            	<td class='colonne_Actions'>
+						                <form method='' action=''>
+						                    <div class="btn-toolbar">
+											    <div class="btn-group btn-small">
+												    <a class='btn btn-small' href="#"><i title='@Messages.get("views.bouton.detail")' class="icon-eye-open"></i></a>
+												    <a class='btn btn-small' href="#"><i title='@Messages.get("views.bouton.modifier")' class="icon-edit"></i></a>
+											    	<a class='btn btn-small' onclick="$(this).envoyerFormulaire('POST', '@routes.StationControleur.supprimerStation(station.id)')"><i title='@Messages.get("views.bouton.supprimer")' class='icon-trash'></i></a>
+					   							</div>
+					   						</div>
+				   						</form>
+						            </td>	            	
+					            </tr>
+					        }
+					    </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+}
