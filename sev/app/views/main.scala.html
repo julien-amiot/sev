@@ -234,17 +234,43 @@
 		</script>
 	</head>
     <body>
-    	<ul class="nav nav-pills">
-    		<li><a href="/tableauDeBord">@Messages.get("views.menu.item.tableauDeBord")</a></li>
-    		<li><a href="/reseaux">@Messages.get("views.menu.item.reseaux")</a></li>
-    		<li><a href="/lignes">@Messages.get("views.menu.item.lignes")</a></li>
-    		<li><a href="/sections">@Messages.get("views.menu.item.sections")</a></li>
-    		<li><a href="/stations">@Messages.get("views.menu.item.stations")</a></li>
-    		<li><a href="/zones">@Messages.get("views.menu.item.zones")</a></li>
-    		<li><a href="/ventilateurs">@Messages.get("views.menu.item.ventilateurs")</a></li>
-    		<li><a href="/etatsVentilateur">@Messages.get("views.menu.item.etatsVentilateur")</a></li>
-    		<li><a href="/etatsCCVM">@Messages.get("views.menu.item.etatsCCVM")</a></li>
-    	</ul>
+        <div class="navbar navbar-static-top navbar-inverse">
+		    <div class="navbar-inner">
+			    <a class="brand" href="#">SEV</a>
+			    <ul class="nav">
+					<li><a href="/tableauDeBord">@Messages.get("views.menu.item.tableauDeBord")</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							Lignes
+							<b class="caret"></b>
+						</a>					
+						<ul class="dropdown-menu">
+							<li><img src="/assets/images/Métro.gif" title="Métro" class="img-circle"></li>
+				    		<li><img src="/assets/images/RER.gif" title="RER" class="img-circle"></li>
+						</ul>
+					</li>				
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							Administration
+							<b class="caret"></b>
+						</a>					
+						<ul class="dropdown-menu">
+							<li class="nav-header">Reseau</li>
+				    		<li><a href="/reseaux">@Messages.get("views.menu.item.reseaux")</a></li>
+				    		<li><a href="/lignes">@Messages.get("views.menu.item.lignes")</a></li>
+				    		<li><a href="/sections">@Messages.get("views.menu.item.sections")</a></li>
+				    		<li><a href="/stations">@Messages.get("views.menu.item.stations")</a></li>
+				    		<li><a href="/zones">@Messages.get("views.menu.item.zones")</a></li>
+				    		<li class="divider"></li>
+							<li class="nav-header">Ventilateurs</li>
+				    		<li><a href="/ventilateurs">@Messages.get("views.menu.item.ventilateurs")</a></li>
+				    		<li><a href="/etatsVentilateur">@Messages.get("views.menu.item.etatsVentilateur")</a></li>
+				    		<li><a href="/etatsCCVM">@Messages.get("views.menu.item.etatsCCVM")</a></li>
+				    	</ul>
+				    </li>			    
+		    	</ul>
+		    </div>
+    	</div>
     	<div style="margin: 40px">
         	@content
         </div>
